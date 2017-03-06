@@ -1,115 +1,97 @@
-# Introduction
+对于Web开发来说，[Webpack](https://webpack.js.org/)解决了一个最基本的问题－集成打包，进而简化了开发过程。Webpack可以对各类资源进行处理，例如JavaScript,CSS和HTML，将它们转化成浏览器容易处理的格式。解决了这个问题，也就让Web开发不再那么痛苦。
 
-[Webpack](https://webpack.js.org/) simplifies web development by solving a fundamental problem: bundling. It takes in various assets, such as JavaScript, CSS, and HTML, and then transforms these assets into a format that’s easy to consume through a browser. Doing this well takes away a significant amount of pain from web development.
+但是由于它复杂的配置驱动方法，Webpack并不是容易掌握的工具。本教程的目的就是帮助你开始学习Webpack，然后逐步超越基础！
 
-It isn’t the easiest tool to learn due to its configuration-driven approach. The purpose of this guide is to help you get started with webpack and then to go beyond the basics.
+## Webpack到底是什么？
 
-## What Is Webpack?
+Web浏览器可以处理HTML，JavaScript和CSS。最简单的开发方式就是编写出浏览器可以直接处理的文件。但问题是，开发的应用最终变得笨重。尤其是在进行Web应用开发的时候，我们也总会遇到这个问题。
 
-Web browsers have been designed to consume HTML, JavaScript, and CSS. The quickest way to develop is simply to write files that the browser understands directly. The problem is that this eventually becomes unwieldy and this is particularly the case when you are developing web applications.
+最简单的方式是将JavaScript代码都打包成一个文件，然后浏览器仅加载一次。但是这也存在问题，随着体积的增长，单个文件变得难以加载，你就需要使用其它的方法。最常用的做法就是，再次把文件拆分以便利于缓存。你甚至需要根据需求动态地来加载各个依赖。
 
-The naïve way to load JavaScript is simply to bundle it all into a single file. Eventually, this won’t be enough as the size of your single bundle grows too big to load. You will need other strategies. One common way is to start splitting it up and then benefit from caching. You can even begin to load dependencies dynamically as you need them.
+随着应用程序的发展，处理它的复杂性也随之增长。Webpack就是用来解决这个问题的。它通过静态分析解决了前面所描述的问题。这个过程使当下前端开发中最基本的问题得到大部分的解决。一旦很好的解决了这个问题，你将受益匪浅。
 
-As an application develops, the complexity of handling it grows as well. Webpack was designed to counter this problem. It manages the problems mentioned above through static analysis. This process gets most of the work done. It is one of the fundamental issues of web development currently, and solving the problem well can help you a lot.
+Webpack并不是解决这个问题的唯一选择，各种不同的工具也早已出现。任务运行管理工具，如Grunt和Gulp，是高级工具中更好的例子。但是常常遇到的问题是，需要你手动编写工作流。将这个问题交给一个打包工具，例如webpack，是一个进步。
 
-Webpack isn’t the only way to handle this problem, and a collection of different tools have emerged. Task runners, such as Grunt and Gulp, are good examples of higher level tools. Often the problem is that need to write the workflows by hand. Pushing that issue to a bundler, such as webpack, is a step forward.
 
-### How Webpack Changes the Situation
+### Webpack如何改变现状？
+Webpack采用了另外一种方式。它让你将你的项目视为一个依赖关系图。你可以在项目中的index.js文件中通过使用标准的```require```或者```import```语法来加载所有依赖。你也可以用同样的方式引入样式文件和其它资源。
 
-Webpack takes another route. It allows you to treat your project as a dependency graph. You could have an *index.js* in your project that pulls in the dependencies the project needs through standard `require` or `import` statements. You can refer to your style files and other assets the same way if you want.
+Webpack基于你指定的配置和你的代码，完成了所有的预处理工作，然后生成了代码包。这些配置的声明方式很强大，但是也有一点儿难学。不过，只要你理解了Webpack的工作原理，它便会成为一个不可却少的工具。这本书就是让你越过最开始的那个小山坡，然后能够走的更远。
 
-Webpack does all the preprocessing for you and gives you the bundles you specify through configuration and your code. This declarative approach is powerful, but it is a little difficult to learn. Webpack becomes an indispensable tool after you begin to understand how it works. This book has been designed to get through that initial learning curve and even go a little further.
+## 你将学到什么？
+这本书是对*[Webpack的官方文档](https://webpack.github.io/docs/)*的补充。官方文档在很多方面有更深入讲解，本书可以作为官方文档的伴侣。俗话说，“万事开头难”，这本书就像一个概览，可以让你开始学习时不那么痛苦，如果你是有一定基础的使用者，本书也会让你温故而知新。
 
-## What Will You Learn
+您将学会开发一个基本的Webpack配置工具，可以分别达到开发和生产的目的。你也会学习很多先进的技术，使你从Webpack强大的功能中获益匪浅。
 
-This book has been designed to complement [the official documentation of webpack](https://webpack.js.org/). The official documentation goes deeper in many aspects, and this book can be considered a companion to it. This book is more like a quick walkthrough that eases the initial learning curve while giving food for thought to more advanced users.
+>本书基于webpack2。如果你想使用webpack1，[官方迁移文档](https://webpack.js.org/guides/migrating/)中包含了所有主要版本的更改。[webpack-cli的GitHub官方库](https://github.com/webpack/webpack-cli)中也有方法可以让你从webpack1迁移到webpack2。
 
-You will learn to develop a composable webpack configuration for both development and production purposes. You will also learn advanced techniques that allow you to benefit from some of the greatest features of webpack.
+## 这本书如何组织的？
+本书从讲解何为webpack开始。然后，你将会看到很多部分，每部分从不同的方向讨论了webpack。在这些章节中，你将学习如何开发webpack配置。（在之后的实际开发中）它们也可以作为参考资料。
+本书包含一下几个章节：
+ - **Developing－开发**部分讲解如何初始化并启动webpack。本章介绍了诸如热加载的特性，并讲解如何撰写易于维护的配置文件。
+ - **Styling－样式**部分花了很大的篇幅来讲解样式相关的话题。你将学习如何通过加载样式文件，如何在设置中引入自动前缀等技术。
+ - **Loading**部分详细讲解了定义webpack的加载器，并向你介绍了如何加载诸如图片、字体、JavaScript等资源。
+ - **Building－构建**部分介绍了source maps，打包的想法和代码拆分。你也将学习如何组织你自己的构建。
+ - **Optimizing－优化**部分将你的构建放到最终的生产质量的层面上，向你介绍了许多小技巧，来使其变体积变得更小。同时，你也将学习如何调整webpack的性能。
+ - **Output－输出**部分讨论了webpack的输出选项。虽然它的名字叫"webpack"，但它不仅限于web。你将会学习如何管理多页面配置并了解服务端渲染的基本概念。
+ - **Techniques－技术**部分讨论了几个特定的想法，包括动态加载，web workers，国际化和部署应用程序。
+ - **Packages－包**章节重点关注了npm和一些与webpack相关的结束。你将学习如何高效使用并且开发自己的npm包。
+ - **Extending－扩展**部分想你展示了如何使用你自己的loaders-加载器和plugins-插件来扩展webpack。
 
-T> This book has focused on webpack 2. If you want to apply its techniques to webpack 1, you should see [the official migration guide](https://webpack.js.org/guides/migrating/) as it covers the changes made between the major versions. There are also [codemods at the webpack-cli repository](https://github.com/webpack/webpack-cli) for migrating from webpack 1 to 2.
+ > 关于source map 没有找到好的译文，具体解释可见阮一峰的博客[JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
 
-## How Is This Book Organized
+在你阅读完本书所有主要的内容后，最后一章，有一个简短的总结，重述了本书的要点。本章节还包含一个检查清单，让你可以根据自己的项目来回顾本书所将的技术。
 
-The book starts by explaining what webpack is. After that, you will find multiple parts, each of which discusses webpack from a different direction. While going through those chapters, you will develop webpack configuration. They also double as reference material.
+本书最后的附录包含了一些次要的话题以及对一些对主要内容更深入的探索。你可以根据自己的兴趣来有选择性的阅读。最后一个附录是疑难解答，可以帮助你理解如何调试webpack错误。
 
-The book has been split into the following parts:
+## 这书适合那些读者？
 
-* **Developing** part gets you up and running with webpack. This part goes through features such as Hot Module Replacement and explains how to compose your configuration so that it remains maintainable.
-* **Styling** part puts heavy emphasis on styling related topics. You will learn how to load styles with webpack and how to introduce techniques such as autoprefixing to your setup.
-* **Loading** part explains webpack’s loader definitions in detail and shows you how to load assets such as images, fonts, and JavaScript.
-* **Building** part introduces source maps and the ideas of bundle and code splitting. You will also learn to tidy up your build.
-* **Optimizing** part pushes your build to production quality level and introduces many smaller tweaks to make it smaller. You will also learn to tune webpack for performance.
-* **Output** part discusses webpack’s output options. Despite its name, it’s not only for the web. You will see how to manage multiple page setups with webpack and pick up the basic idea of Server Side Rendering.
-* **Techniques** part discusses several specific ideas including dynamic loading, web workers, internationalization, and deploying your applications.
-* **Packages** part has a heavy focus on npm and webpack related techniques. You will learn both to consume and author npm packages in an efficient way.
-* **Extending** part shows how to extend webpack with your loaders and plugins.
+希望你对JavaScript和Node.js有基本的掌握。对npm的使用水平也到了初级阶段。如果你对Webpack有一些了解，那就太棒了。读完此书，将会加强你对这些工具的理解。
 
-There’s a short conclusion chapter after the main content that recaps the main points of the book. It contains checklists that allow you to go through your projects against the book techniques.
+如果你是Webpack老手，你也能学到一些东西。浏览本书，看看你能否学习一些技术。我已经尽我所能的使本书包含了webpack这个工具所有的部分，甚至包括一些比较伤脑经的部分。
 
-The appendices the end of the book cover secondary topics and sometimes dig deeper into the main ones. You can approach them in any order you want depending on your interest. There’s a *Troubleshooting* appendix at the end in case you want to understand how to debug webpack errors.
+如果你仍然有困惑，可以尝试从本书的社区中寻找帮助。如果你卡住了或者有些地方理解不了，我们可以提供帮助。你的任评价都将会使本书的质量得到提升。
 
-T> If you are unsure of some term and its meaning, see the *Glossary* at the end of the book.
+## 如何获得本书？
+如果你不是很了解Webpack，建议仔细阅读前两章。后面的可以浏览下，先看感兴趣的部分。如果你已经对Webpack有一定了解，涉猎并选择你觉得有价值的技术点进行学习。
 
-## Who Is This Book For
-
-I expect that you have a basic knowledge of JavaScript and Node. You should be able to use npm on an elementary level. If you know something about webpack, that’s great. By reading this book, you will deepen your understanding of these tools.
-
-If you happen to know webpack well, there still might be something in the book for you. Skim through it and see if you can pick up some techniques. I’ve done my best to cover even some of the knottier parts of the tool.
-
-If you find yourself struggling, consider seeking help from the community around the book. In case you are stuck or don’t understand something, we are here to help. Any comments you might have will go towards improving the content.
-
-## How to Approach the Book
-
-If you don’t know much about the topic, consider going carefully through the early parts. You can scan the rest to pick the bits you find interesting. If you know webpack already, skim and choose the techniques you find valuable.
-
-I have compiled [a set of slides online](http://presentations.survivejs.com/advanced-webpack/) that overlap with the book. Consider going through the set to get a rough idea and then delve into the book to understand the ideas in greater detail.
-
-## Book Versioning
-
-Given this book receives a fair amount of maintenance and improvements due to the pace of innovation, there’s a rough versioning scheme in place. I maintain release notes for each new version at the [book blog](http://survivejs.com/blog/). That should give you a good idea of what has changed between versions.
-
-Examining the GitHub repository may be beneficial. I recommend using the GitHub *compare* tool for this purpose. Example:
-
+## 本书的版本
+由于本书不断创新的步伐，并经过很多修补和改进，所以有很多个版本。我通过本书[官方博客](http://survivejs.com/blog/)对新老版本信息进行发布，版本信息会告诉你各个版本的差异。通过GitHub仓库检测也是一个很好的方法。推荐使用Github对比工具。例如：
 ```
-https://github.com/survivejs/webpack-book/compare/v1.8.0...v1.9.2
+https://github.com/survivejs/webpack-book/compare/v1.7.0...v1.8.7
 ```
+在浏览器中输入该地址，页面会向你展示两个版本的提交信息。你将看到本书每一行的更改
 
-The page will show you the individual commits that went to the project between the given version range. You can also see the lines that have changed in the book.
+本书当前的本书是1.8.7
 
-The current version of the book is **1.9.2**.
+本书是一项持续性的工作，非常欢迎通过各种渠道进行反馈。我将会基于需求来扩展本教程，使其可以更好的惠及你我他。你也可以为本书贡献出你的更改和源代码。
 
-The book is an on-going effort, and I welcome feedback through various channels discussed below. I expand the guide based on demand to make it serve you as well as possible. You can even contribute fixes of your own to the book as the source is available.
+本书的部分利润将会用于工具自身的开发。
 
-A part of the profit goes towards funding the development of the tool itself. Most of it goes to the core developers, including myself. You can also [support webpack directly through Open Collective](https://opencollective.com/webpack).
+## 得到支持
+“人无完人”，对于书中内容，你可能会有一些问题。可以通过下面的方式进行反馈：
+ - 通过  *[GitHub Issue Tracker](https://github.com/survivejs/webpack/issues)*联系原作者
+ - 加入到[Gitter Chat](https://gitter.im/survivejs/webpack)
+ - 关注推特官方账号 *[@survivejs](https://twitter.com/survivejs)*或者直接联系作者*[@bebraw](https://twitter.com/survivejs)*
+ - 给原作者发邮件*[info@survivejs.com](http://info@survivejs.com)*
+ - 直接向作者提关于Webpack和React的问题：*[SurviveJS AmA](https://github.com/survivejs/ama/issues)*
 
-## Getting Support
+在Stack Overflow上提问请用survivejs标记，我将会注意到。推特上，也可用#survivejs。
 
-As no book is perfect, you will likely come by issues and might have some questions related to the content. There are a couple of options to deal with this:
 
-* Contact me through [GitHub Issue Tracker](https://github.com/survivejs/webpack-book/issues)
-* Join me at [Gitter Chat](https://gitter.im/survivejs/webpack)
-* Follow [@survivejs](https://twitter.com/survivejs) on Twitter for official news or poke me through [@bebraw](https://twitter.com/bebraw) directly
-* Send me email at [info@survivejs.com](mailto:info@survivejs.com)
-* Ask me anything about webpack or React at [SurviveJS AmA](https://github.com/survivejs/ama/issues)
+## 信息发布
+我将通过一下频道发布SurviveJs的信息
+ - *[Mailing list](http://eepurl.com/bth1v5)*
+ - *[Twitter](https://twitter.com/survivejs)*
+ - *[Blog RSS](http://survivejs.com/atom.xml)*
 
-If you post questions to Stack Overflow, tag them using **survivejs**. You can use the hashtag **#survivejs** on Twitter for the same result.
+欢迎订阅
 
-## Announcements
+## 致谢
+非常感谢Christian Alfoni帮助我制作这本书的第一个版本。这激励着整个SurviveJS项目。 您现在看到的版本是全部重写后的版本。
 
-I announce SurviveJS-related news through a couple of channels:
+如果没有细心的编辑和我的编辑[Jesús Rodríguez](https://github.com/Foxandxss)的反馈，本书将远远达不到现在的质量。
 
-* [Mailing list](http://eepurl.com/bth1v5)
-* [Twitter](https://twitter.com/survivejs)
-* [Blog RSS](http://survivejs.com/atom.xml)
+没有最开始的版本"SurviveJS - Webpack and React"的努力，本书也将无缘与大家见面。任何支持了那本书的人都应该得到我的致谢。你可以用那本书中得到更详细的原因。
 
-Feel free to subscribe.
-
-## Acknowledgments
-
-Big thanks to [Christian Alfoni](http://www.christianalfoni.com/) for helping me craft the first version of this book. That inspired the whole SurviveJS effort. The version you see now is a complete rewrite.
-
-The book wouldn’t be half as good as it is without patient editing and feedback by my editor [Jesús Rodríguez](https://github.com/Foxandxss). Thank you.
-
-This book wouldn’t have been possible without the original "SurviveJS - Webpack and React" effort. Anyone who contributed to it deserves my thanks. You can check that book for more accurate attributions.
-
-Thanks to Mike "Pomax" Kamermans, Cesar Andreu, Dan Palmer, Viktor Jančík, Tom Byrer, Christian Hettlage, David A. Lee, Alexandar Castaneda, Marcel Olszewski, Steve Schwartz, Chris Sanders, Charles Ju, Aditya Bhardwaj, Rasheed Bustamam, José Menor, Ben Gale, Jake Goulding, Andrew Ferk, gabo, Giang Nguyen, @Coaxial, @khronic, Henrik Raitasola, Gavin Orland, David Riccitelli, Stephen Wright, Majky Bašista, Artem Sapegin, Gunnari Auvinen, Jón Levy, Alexander Zaytsev, Richard Muller, Ava Mallory (Fiverr), Sun Zheng’an, Nancy (Fiverr), Aluan Haddad, Pedr Browne, Steve Mao, Craig McKenna, Tobias Koppers, and many others who have contributed direct feedback for this book!
+感谢Mike“Pomax”Kamermans，Cesar Andreu，Dan Palmer，ViktorJančík，Tom Byrer，Christian Hettlage，David A. Lee，Alexandar Castaneda，Marcel Olszewski，Steve Schwartz，Chris Sanders，Charles Ju，Aditya Bhardwaj，Rasheed Bustamam，José Menor，Ben Gale，Jake Goulding，Andrew Ferk，gabo，Giang Nguyen，@Coaxial，@khronic，Henrik Raitasola，Gavin Orland，David Riccitelli，Stephen Wright，MajkyBašista，Artem Sapegin，Gunnari Auvinen，JónLevy，Alexander Zaytsev，Richard Muller，Ava Mallory（Fiverr），Sun Zheng'an，Nancy（Fiverr），Aluan Haddad，Pedr Browne，Steve Mao，Craig McKenna，Tobias Koppers和许多其他人为本书贡献了直接反馈！
