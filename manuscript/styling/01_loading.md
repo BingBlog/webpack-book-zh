@@ -93,7 +93,7 @@ leanpub-end-insert
 
 Execute `npm start` now. Browse to `http://localhost:8080` if you are using the default port and open up *main.css* and change the background color to something like `lime` (`background: lime`). Develop styles as needed to make it look a little nicer. Note that it does **not** perform a hard refresh on the browser since we have HMR setup in place.
 
-现在执行`npm start`。如果你使用的是默认的端口在浏览器中打开`http://localhost:8080`，打开*main.css*文件，更改背景颜色，例如`lime` (`background: lime`)。开发的样式如我们所需的那样，要使它更好看一点儿。请注意，由于我们已经设置了HMR，浏览器*并没有*表现出硬刷新，
+现在执行`npm start`。如果你使用的是默认的端口在浏览器中打开`http://localhost:8080`，打开*main.css*文件，更改背景颜色，例如`lime` (`background: lime`)。开发的样式如我们所需的那样，要使它更好看一点儿。请注意，由于我们已经设置了HMR，浏览器**并没有**刷新，
 
 
 We’ll continue from here in the next chapter. Before that, though, I will discuss styling-related techniques you may find useful. If you want, integrate some of them to your project.
