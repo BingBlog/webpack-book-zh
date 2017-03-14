@@ -24,7 +24,7 @@ T> 这种技术也可以用于其他资源，例如模板。
 
 W> It can be potentially dangerous to use inline styles within JavaScript in production as it represents an attack vector. **Critical path rendering** embraces the idea and inlines the critical CSS to the initial HTML payload improving perceived performance of the site. It is discussed in the next chapter in detail. In limited contexts inlining a small amount of CSS can be a viable option to speed up the initial load (fewer requests).
 
-W> 在生产中使用JavaScript内联样式，是有潜在危险的，因为它代表attack vector。 **关键路径渲染**包含了一个想法：将关键CSS添加到初始的HTML文件中，来提高加载效率，提升网站的感知性能。 这将在下一章详细讨论。 在有限的上下文中内联少量的CSS可以是提高初始加载速度（更少的请求）的可行选项。
+W> 在生产中使用JavaScript内联样式，是有潜在危险的，因为它代表attack vector。 **关键路径渲染**包含了一个想法：将关键CSS添加到初始的HTML文件中，来提高加载效率，提升网站的感知性能。 这将在下一章详细讨论。 在有限的上下文中内联少量的CSS,是提高初始加载速度（更少的请求）的可行选项。
 
 
 ## Setting Up `ExtractTextPlugin`
@@ -176,11 +176,11 @@ Now our styling has been pushed to a separate CSS file. Thus, our JavaScript bun
 
 T> If you are getting `Module build failed: CssSyntaxError:` or `Module build failed: Unknown word` error, make sure your `common` configuration doesn’t have a CSS-related section set up.
 
-T> 如果你得到“模块构建失败：`CssSyntaxError:`或`Module build failed: Unknown word`，请确保你的`common`配置没有CSS相关的设置。
+T> 如果你得到`Module build failed: CssSyntaxError:`或`Module build failed: Unknown word`，请确保你的`common`配置没有CSS相关的设置。
 
 T> [extract-loader](https://www.npmjs.com/package/extract-loader) is a light alternative to `ExtractTextPlugin`. It does less, but can be enough for basic extraction needs.
 
-T> [extract-loader](https://www.npmjs.com/package/extract-loader)是`ExtractTextPlugin`的轻型替代品。 它做的更少一些，但可以足够基本的提取需要。
+T> [extract-loader](https://www.npmjs.com/package/extract-loader)是`ExtractTextPlugin`的轻型替代品。 它做的更少一些，但可以满足基本的提取需求。
 
 ## Managing Styles Outside of JavaScript
 
@@ -188,7 +188,7 @@ T> [extract-loader](https://www.npmjs.com/package/extract-loader)是`ExtractText
 
 Even though referring to styling through JavaScript and then bundling is a valid option, it is possible to achieve the same result through an `entry` and [globbing](https://www.npmjs.com/package/glob). The basic idea goes like this:
 
-尽管通过JavaScript引用样式，然后构建，是一个有效的选项，但是也可以通过`entry`和[globbing](https://www.npmjs.com/package/glob)实现相同的结果。 基本思想是这样的：
+通过JavaScript引用样式，然后构建，是一个有效的选项，但也可以通过`entry`和[globbing](https://www.npmjs.com/package/glob)实现相同的结果。 基本思想是这样的：
 
 ```javascript
 ...
@@ -219,7 +219,7 @@ const commonConfig = merge([
 
 After this type of change, you would not have to refer to styling from your application code. It also means that CSS Modules won’t work anymore. As a result, you should get both *style.css* and *style.js*. The latter file will contain roughly content like `webpackJsonp([1,3],[function(n,c){}]);` and it doesn’t do anything useful as discussed in [webpack issue 1967](https://github.com/webpack/webpack/issues/1967).
 
-进行此类更改后，您不必从应用程序代码引用样式。 这也意味着CSS模块将不再工作。 因此，你将得到*style.css*和*style.js*。 *style.js*文件将包含大概内容像`webpackJsonp（[1,3]，[function（n，c）{}]）;`。正如在[webpack issue 1967](https://github.com/webpack/webpack/issues/1967)讨论的那样，它没有任何作用。
+进行此类更改后，您不必从应用程序代码引用样式。 这也意味着CSS模块将不再工作。 因此，你将得到*style.css*和*style.js*。 *style.js*文件将包含像`webpackJsonp（[1,3]，[function（n，c）{}]）;`的内容。正如在[webpack issue 1967](https://github.com/webpack/webpack/issues/1967)讨论的那样，它没有任何作用。
 
 The approach can be useful if you have to port a legacy project relying on CSS concatenation. If you want strict control over the ordering, you can set up a single CSS entry and then use `@import` to bring the rest to the project through it. Another option would be to set up a JavaScript entry and go through `import` to get the same effect.
 
@@ -231,7 +231,7 @@ The approach can be useful if you have to port a legacy project relying on CSS c
 
 Our current setup separates styling from JavaScript neatly. Even though the technique is most useful with CSS, it can be used to extract HTML templates or any other files types you might consume. The hard part about `ExtractTextPlugin` has to do with its setup, but the complexity can be hidden behind an abstraction.
 
-我们当前的设置清晰地分离了CSS和JavaScript。该技术不仅对CSS非常有用，它也可用于提取HTML模板或任何其他可能使用的文件类型。 `ExtractTextPlugin`那一理解的部分与其设置有关，但是复杂性都被隐藏在抽象后面（我们使用时，并没有想象的那么复杂）。
+我们当前的设置清晰地分离了CSS和JavaScript。该技术不仅对CSS非常有用，它也可用于提取HTML模板或任何其他可能使用的文件类型。 `ExtractTextPlugin`难以搞定是其设置相关的部分，但是复杂性都被隐藏在抽象后面（我们使用时，并没有想象的那么复杂）。
 
 To recap:
 回顾：
