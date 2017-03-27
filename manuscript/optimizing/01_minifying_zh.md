@@ -182,7 +182,7 @@ leanpub-end-insert
 
 可以通过查看*babili-webpack-plugin*和Babili文档来了解更多功能。举例来说，Babili甚至能让你决定如何处理代码评论。
 
-### 其他压缩JavaScript的方式（her Ways to Minify JavaScript）
+### 其他压缩JavaScript的方式（Other Ways to Minify JavaScript）
 
 尽管我们采用Babili来举例，但仍然有很多的工具可供考虑：
 
