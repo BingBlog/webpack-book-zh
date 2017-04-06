@@ -20,11 +20,11 @@ T> 如果你想更详细的了解构建工具和它们的历史，请查看*Comp
 
 The smallest project you could bundle with webpack consists of **input** and **output**. The bundling process begins from user defined **entries**. Entries themselves are **modules** and can point to other modules through **imports**.
 
-如果你想象一下webpack打包的最简单的项目，那么（这个项目）就只有**输入（input）**和**输出（output）**。对webpack来说，打包过程从用户定义的**入口文件（entries）**开始。入口文件本身也是**模块**并且可以通过**imports**引入其它模块。
+如果你想象一下webpack打包的最简单的项目，那么（这个项目）就只有**输入(input)**和**输出(output)**。对webpack来说，打包过程从用户定义的**入口文件(entries)**开始。入口文件本身也是**模块**并且可以通过**imports**引入其它模块。
 
 When you bundle a project through webpack, it traverses through imports, constructing a **dependency graph** of the project and then generating the **output** based on the configuration. It's possible to define **split points** generating separate bundles within the project code itself.
 
-当你使用Webpack来打包一个项目时，它将查找所有的imports，此时，webpack会构建一个**依赖关系图（dependency graph）**，然后基于配置文件生成**输出文件（output）**。并可以通过定义**拆分规则（split points）**将项目代码生成单独的代码包。
+当你使用Webpack来打包一个项目时，它将查找所有的imports，此时，webpack会构建一个**依赖关系图(dependency graph)**，然后基于配置文件生成**输出文件(output)**。并可以通过定义**拆分规则(split points)**将项目代码生成单独的代码包。
 
 Webpack supports ES6, CommonJS, and AMD module formats out of the box. The loader mechanism works for CSS as well, and `@import` and `url()` are supported through *css-loader*. You can also find plugins for specific tasks, such as minification, internationalization, HMR, and so on.
 
@@ -41,7 +41,7 @@ T> 关系依赖图描述的是一个有向图，这个有向图描绘了各个�
 
 Webpack begins its work from **entries**. Often these are JavaScript modules where webpack begins its traversal process. During this process webpack evaluates the matches against **loader** configuration that tells how to transform the files.
 
-Webpack从**入口（entries）**开始工作。通常它们是JavaScript模块，webpack从这里开始遍历进程。在此过程中对匹配的**加载器（loader）**配置进行执行，这些配置告知了webpack如何进行文件转化。
+Webpack从**入口(entries)**开始工作。通常它们是JavaScript模块，webpack从这里开始遍历进程。在此过程中对匹配的**加载器(loader)**配置进行执行，这些配置告知了webpack如何进行文件转化。
 
 {pagebreak}
 
@@ -89,11 +89,11 @@ Assuming all loaders were found, webpack evaluates the matched loaders from bott
 
 If all loader evaluation completed without a runtime error, webpack includes the source in the last bundle. **Plugins** allow you to intercept **runtime events** at different stages of the bundling process.
 
-如果所有的加载器在运行时都没有报错，webpack会将资源包裹到最终的代码包。**Plugins**允许你在打包过程的不同阶段插入**运行时事件（runtime events）**
+如果所有的加载器在运行时都没有报错，webpack会将资源包裹到最终的代码包。**Plugins**允许你在打包过程的不同阶段插入**运行时事件(runtime events)**
 
 Although loaders can do a lot, they don’t provide enough power for advanced tasks by themselves. Plugins intercept **runtime events** provided by webpack. A good example is bundle extraction performed by `ExtractTextPlugin` which, working in tandem with a loader, extracts CSS files out of the bundle and into a file of its own.
 
-尽管加载器可以实现很多，但是它们本身并没有为更高级的任务提供足够强大的处理能力。插件（却）可以插入webpack支持的**运行时事件（runtime events）**。一个很好的例子就是`ExtractTextPlugin`执行的代码包提取，它同一个加载器串起来工作，从代码包中提取CSS文件并输出到其独自的文件。
+尽管加载器可以实现很多，但是它们本身并没有为更高级的任务提供足够强大的处理能力。插件（却）可以插入webpack支持的**运行时事件(runtime events)**。一个很好的例子就是`ExtractTextPlugin`执行的代码包提取，它同一个加载器串起来工作，从代码包中提取CSS文件并输出到其独自的文件。
 
 Without this step, CSS would end up in the resulting JavaScript as webpack treats all code as JavaScript by default. The extraction idea is discussed in the *Separating CSS* chapter.
 
@@ -108,7 +108,7 @@ After every module has been evaluated, webpack writes **output**. The output inc
 
 That’s not all there is to the bundling process. For example, you can define specific **split points** where webpack generates separate bundles that are loaded based on application logic. The idea is discussed in the *Code Splitting* chapter.
 
-上述也并不是所有的打包过程。例如，你可以定义特定的**拆分规则（split points）**，进而使webpack根据应用的逻辑生成单独的代码包。该想法将在*代码拆分（Code Splitting）*章节被讨论。
+上述也并不是所有的打包过程。例如，你可以定义特定的**拆分规则(split points(**，进而使webpack根据应用的逻辑生成单独的代码包。该想法将在*代码拆分(Code Splitting)*章节被讨论。
 
 {pagebreak}
 
@@ -235,7 +235,7 @@ To summarize:
 * 热加载帮助webpack流行了起来。它是一个可以提高用户体验的特性，可以在不刷新浏览器的情况下更新代码。
 
 * Webpack can generate **hashes** for filenames allowing you to invalidate bundles as their contents change.
-* Webpack可以为文件名生成**哈希值（hashes）**来表明代码包的内容被更改
+* Webpack可以为文件名生成**哈希值(hashes)**来表明代码包的内容被更改
 
 In the next part of the book you'll learn to construct a development configuration using webpack while learning more about its basic concepts.
 

@@ -7,7 +7,7 @@ It’s a funny story how I started with webpack. Before getting addicted to Java
 
 Somehow the Instagram frontend team discovered an early version of webpack and started to use it for instagram.com. Pete Hunt, Facebook employee managing the Instagram web team, gave [the first significant talk about webpack](https://www.youtube.com/watch?v=VkTCL6Nqm6Y) at OSCON 2014. The talk boosted the popularity of webpack. One of the reasons for adoption of webpack by Instagram was **code splitting**.
 
-不知何故，Instagram前端团队发现了一个早期版本的webpack，并开始将其用于instagram.com。管理Instagram网络团队的Facebook员工Pete Hunt在OSCON 2014上发表了[关于webpack的第一篇重要讲话](https://www.youtube.com/watch?v=VkTCL6Nqm6Y)。该演讲提升了Webpack的普及性。Instagram采用webpack的原因之一就是**代码拆分（code splitting）**。
+不知何故，Instagram前端团队发现了一个早期版本的webpack，并开始将其用于instagram.com。管理Instagram网络团队的Facebook员工Pete Hunt在OSCON 2014上发表了[关于webpack的第一篇重要讲话](https://www.youtube.com/watch?v=VkTCL6Nqm6Y)。该演讲提升了Webpack的普及性。Instagram采用webpack的原因之一就是**代码拆分(code splitting)**。
 
 I have been following this book since its early stages. It was once a combined React and webpack book. It has grown since then and become a book of its own filled with content.
 

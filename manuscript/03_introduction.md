@@ -189,7 +189,7 @@ You can find more related material from the following sources:
 * 订阅[Youtube channel](https://www.youtube.com/channel/UCvUR-BJcbrhmRQZEEr4_bnw)。
 
 * Check out [SurviveJS related presentation slides](https://presentations.survivejs.com/).
-* 查看[SurviveJS相关演示幻灯片]（https://presentations.survivejs.com/）。
+* 查看[SurviveJS相关演示幻灯片](https://presentations.survivejs.com/)。
 
 ## Acknowledgments
 ## 致谢
