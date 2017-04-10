@@ -6,9 +6,9 @@ Consuming npm packages through webpack is often convenient but there are certain
 
 Most popular packages out there comply with SemVer. It's problematic as sometimes packages inadvertently break it, but there are ways around this. Roughly, SemVer states that you should not break backward compatibility, given [certain rules](http://semver.org/) are met:
 
-1. The MAJOR version gets incremented when incompatible API changes are made to stable APIs.
-2. The MINOR version gets incremented when backwards-compatible functionality is added.
-3. The PATCH version gets incremented when a backwards-compatible bug is fixed.
+1. The MAJOR version increments when incompatible API changes are made.
+2. The MINOR version increments when backwards-compatible features are added.
+3. The PATCH version increments when backwards-compatible bugs are fixed.
 
 The rules are different for `0.x` versions. There the rule is `0.<MAJOR>.<MINOR>`. For packages considered stable and suitable for public usage (`1.0.0` and above), the rule is `<MAJOR>.<MINOR>.<PATCH>`. For example, if the current version of a package is `0.1.4` and a breaking change is performed, it should bump to `0.2.0`.
 
@@ -53,13 +53,15 @@ npm's lookup algorithm is another aspect that's good to understand. Sometimes th
 2. If nothing was found, check globally installed packages. If you are using Unix, look into */usr/local/lib/node_modules* to find them. You can figure out the specific directory using `npm root -g`.
 3. If the global lookup fails, it fails hard. You should get an error now.
 
+{pagebreak}
+
 On a package level, npm resolves to a file through the following process:
 
 1. Look up *package.json* of the package.
 2. Get the contents of the `main` field. If it doesn't exist, default to *<package>/index.js*.
 3. Resolve to the `main` file.
 
-The general lookup algorithm respects an environment variable `NODE_PATH`. If you are using Unix, you can patch it through `NODE_PATH=$NODE_PATH:./demo`. The call can be included at the beginning of a *package.json* scripts to tweak `NODE_PATH` temporarily, although it's better to avoid this if possible.
+The general lookup algorithm respects an environment variable `NODE_PATH`. If you are using Unix, you can patch it through `NODE_PATH=$NODE_PATH:./demo`. The call can be included at the beginning of a *package.json* scripts to tweak `NODE_PATH` temporarily.
 
 You can tweak webpack's module resolution through the `resolve.modules` field:
 
@@ -74,7 +76,7 @@ You can tweak webpack's module resolution through the `resolve.modules` field:
 },
 ```
 
-Sometimes it's beneficial to use these techniques together. Compared to npm environment, webpack provides more flexibility, although you can mimic a lot of webpack's functionality using terminal based tricks.
+Compared to npm environment, webpack provides more flexibility, although you can mimic a lot of webpack's functionality using terminal based tricks.
 
 W> Installing global packages can lead to surprising behavior. If you have a package installed both globally and it a project happens to contain it, executing associated terminal command (say `webpack`) points to the version of the project. It doesn't work unless the global package exists.
 

@@ -61,18 +61,18 @@ With Make, you model your tasks using Make-specific syntax and terminal commands
 
 ```javascript
 define(['./MyModule.js'], function (MyModule) {
-  // export at module root
-  return function() {};
+  return function() {}; // Export at module root
 });
 
 // or
 define(['./MyModule.js'], function (MyModule) {
-  // export as module function
   return {
-    hello: function() {...},
+    hello: function() {...}, // Export as a module function
   };
 });
 ```
+
+{pagebreak}
 
 Incidentally, it's possible to use `require` within the wrapper:
 
@@ -241,7 +241,7 @@ T> [Splittable](https://www.npmjs.com/package/splittable) is a Browserify wrappe
 
 ![JSPM](images/jspm.png)
 
-Using JSPM is quite different than previous tools. It comes with a command line tool of its own that is used to install new packages to the project, create a production bundle, and so on. It supports [SystemJS plugins](https://github.com/systemjs/systemjs#plugins) that allow you to load various formats to your project.
+Using [JSPM](http://jspm.io/) is quite different than previous tools. It comes with a command line tool of its own that is used to install new packages to the project, create a production bundle, and so on. It supports [SystemJS plugins](https://github.com/systemjs/systemjs#plugins) that allow you to load various formats to your project.
 
 ## Brunch
 

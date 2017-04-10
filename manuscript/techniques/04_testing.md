@@ -208,7 +208,9 @@ module.exports = (config) => {
 };
 ```
 
-W> The file has to be named exactly as *karma.conf.js* as otherwise, Karma doesn't pick it up automatically.
+W> The file has to be named exactly as *karma.conf.js*. Otherwise Karma doesn't pick it up automatically.
+
+W> The setup generates a bundle per each test. If you have a large amount of tests and want to improve performance, set up `require.context` as for Mocha above. See [karma-webpack issue 23](https://github.com/webpack-contrib/karma-webpack/issues/23) for more details.
 
 {pagebreak}
 
@@ -286,6 +288,8 @@ PhantomJS ...: Executed 1 of 1 SUCCESS (0.005 secs / 0.001 secs)
 
 Given running tests after the change can get boring after a while, Karma provides a watch mode.
 
+W> PhantomJS does not support ES6 features yet so you have to preprocess the code for tests using them. The webpack setup is done later in this chapter. ES6 support is planned for PhantomJS 2.5.
+
 ### Watch Mode with Karma
 
 Accessing Karma's watch mode is possible as follows:
@@ -319,23 +323,24 @@ Install the dependencies first:
 npm install babel-plugin-istanbul karma-coverage --save-dev
 ```
 
-Connect the Babel plugin so that the instrumentation only happens when Karma is run:
+Connect the Babel plugin so that the instrumentation happens when Karma is run:
 
 **.babelrc**
 
 ```json
-{
-  ...
+...
 leanpub-start-insert
-  "env": {
-    "karma": {
-      "plugins": [
-        "istanbul"
+"env": {
+  "karma": {
+    "plugins": [
+      [
+        "istanbul",
+        { "exclude": ["tests/*.test.js"] }
       ]
-    }
+    ]
   }
-leanpub-end-insert
 }
+leanpub-end-insert
 ```
 
 Make sure to set Babel environment, so it picks up the plugin:
@@ -363,6 +368,12 @@ On Karma side, reporting has to be set up and Karma configuration has to be conn
 **karma.conf.js**
 
 ```javascript
+leanpub-start-insert
+const path = require('path');
+leanpub-end-insert
+
+...
+
 module.exports = (config) => {
   ...
 
