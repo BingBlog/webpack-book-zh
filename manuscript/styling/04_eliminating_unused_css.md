@@ -18,7 +18,7 @@ T> [uncss](https://www.npmjs.com/package/uncss)是另外一个很好的替代方
 
 To make the demo more realistic, let's install [Pure.css](http://purecss.io/), a small CSS framework, as well and refer to it from the project so that you can see PurifyCSS in action. These two projects aren't related in any way despite the naming.
 
-为了使我们的shili更加真实，我们安装一个小型框架[Pure.css](http://purecss.io/)，在项目中引用这个框架，这样你就可以看到PurifyCSS的效果。这两个项目除了名字相似外，并没有其它关系。
+为了使我们的例子更加真实，我们安装一个小型框架[Pure.css](http://purecss.io/)，在项目中引用这个框架，这样你就可以看到PurifyCSS的效果。这两个项目除了名字相似外，并没有其它关系。
 
 ```bash
 npm install purecss --save
@@ -93,7 +93,7 @@ As you can see, the size of the CSS file grew. This is something to fix with Pur
 
 Using PurifyCSS can lead to significant savings. In the official example of the project, they purify and minify Bootstrap (140 kB) in an application using ~40% of its selectors to mere ~35 kB. That's a big difference.
 
-使用PurifyCSS可以显着节省成本。在有些例子中，他们在一个应用程序中使用大约40％的选择器来纯化和缩减Bootstrap（140 kB），直到约35 kB。这是一个很大的区别。
+使用PurifyCSS可以显着节省成本。在有些例子中，他们在一个应用程序中使用大约40％的选择器来纯化和缩减Bootstrap（140 kB），直到35 kB左右。这是一个很大的区别。
 
 [purifycss-webpack](https://www.npmjs.com/package/purifycss-webpack) allows to achieve similar results. You should use the `ExtractTextPlugin` with it for the best results. Install it and a [glob](https://www.npmjs.org/package/glob) helper first:
 
@@ -130,7 +130,7 @@ leanpub-end-insert
 
 Next, the part has to be connected with the configuration. It's important the plugin is used *after* the `ExtractTextPlugin`; otherwise it doesn't work:
 
-接下来，我们将它挂在到配置中。非常重要的是，我们需要使这个插件在`ExtractTextPlugin`*之后*被使用；否则它将不会生效。
+接下来，我们将它挂在到配置中。重要的是，我们需要使这个插件在`ExtractTextPlugin`*之后*被使用；否则它将不会生效。
 
 **webpack.config.js**
 
@@ -187,7 +187,7 @@ PurifyCSS支持[附加选项](https://github.com/purifycss/purifycss#the-optiona
 
 W> Using PurifyCSS loses CSS source maps even if you have enabled them through loader specific configuration due to the way it works underneath.
 
-W> 因为它的工作方式,使用PurifyCSS将丢失CSSsource maps，即使您已通过加载器明确配置启用它们。
+W> 因为它的工作方式,使用PurifyCSS将丢失CSS source maps，即使您已通过加载器明确配置启用它们。
 
 {pagebreak}
 
@@ -195,7 +195,7 @@ W> 因为它的工作方式,使用PurifyCSS将丢失CSSsource maps，即使您�
 
 The idea of [critical path rendering](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/) takes a look at CSS performance from a different angle. Instead of optimizing for size, it optimizes for render order and puts emphasis on **above-the-fold** CSS.
 
-[关键路径渲染](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/)的想法是从不同的角度来看待CSS性能。 而不是优化大小，它优化渲染顺序和强调**above-the-fold** CSS。
+[关键路径渲染](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/)的想法是从不同的角度来看待CSS性能。而不是优化大小，它优化渲染顺序和强调**above-the-fold** CSS。
 
 
 [isomorphic-style-loader](https://www.npmjs.com/package/isomorphic-style-loader) achieves this using webpack and React. [critical-path-css-tools](https://github.com/addyosmani/critical-path-css-tools) listing by Addy Osmani lists other related tools.
@@ -206,7 +206,7 @@ The idea of [critical path rendering](https://developers.google.com/web/fundamen
 
 Using PurifyCSS can lead to a significant decrease in file size. It's particularly valuable for static sites that rely on a heavy CSS framework. The more dynamic a site or an application becomes, the harder it becomes to analyze reliably.
 
-使用PurifyCSS可以使文件大小显著减少。 它对依赖于大型CSS框架的静态网站特别有用。 站点或应用程序变得越动态，就越难以可靠地分析。
+使用PurifyCSS可以使文件大小显著减少。 它对依赖于大型CSS框架的静态网站特别有用。站点或应用程序变得越动态，就越难以可靠地分析。
 
 To recap:
 
@@ -215,7 +215,6 @@ To recap:
 * Eliminating unused CSS is possible using PurifyCSS. It performs static analysis against the source.
 
 * 使用PurifyCSS可以消除未使用的CSS。它对源代码执行静态分析。
-
 
 * The functionality can be enabled through *purifycss-webpack* and the plugin should be applied *after* `ExtractTextPlugin`.
 

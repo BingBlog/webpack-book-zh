@@ -6,7 +6,6 @@ It can be difficult to remember which vendor prefixes you have to use for specif
 您可能很难记住，必须为特定的CSS规则使用哪些（浏览器）提供商的前缀，来支持各种各样的用户。**Autoprefixing**解决了这个问题。 它可以通过PostCSS和[autoprefixer](https://www.npmjs.com/package/autoprefixer)插件来启用。*autoprefixer*使用[Can I Use](http://caniuse.com/)这个服务来确定应该添加哪些规则，并且可以进一步调整它的行为。
 
 ## Setting Up Autoprefixing
-
 ## 设置自动前缀
 
 Achieving autoprefixing takes a small addition to the current setup. Install *postcss-loader* and *autoprefixer* first:
@@ -58,7 +57,7 @@ leanpub-end-insert
 
 To confirm that the setup works, there should be something to autoprefix. Adjust the CSS:
 
-要确认安装是否正常，我们需要添加一些CSS规则，并自动补全这些规则的前缀。 像这样调整CSS：
+要确认安装是否正常，我们需要添加一些CSS规则，来使其自动补全这些规则的前缀。像这样调整CSS：
 
 **app/main.css**
 
@@ -73,7 +72,7 @@ leanpub-end-insert
 
 If you build the application now (`npm run build`) and examine the built CSS, you should be able to find a declaration there:
 
-如果你现在构建应用程序，执行`npm run build`并检查构建的CSS，你应该能够找到下面这样的CSS规则：
+如果你现在构建应用程序，执行`npm run build`并检查构建的CSS，你应该能够找到像下面这样声明的CSS规则：
 
 ```css
 body {
@@ -90,7 +89,7 @@ As you can see, autoprefixing expands the rules, so you don't have to remember t
 
 If you know what browsers you support, it's possible to set up a [browserslist](https://www.npmjs.com/package/browserslist) file. Different tools pick up this definition, *autoprefixer* included.
 
-如果您明确知道需要支持哪些浏览器，则可以设置一个[browserslist](https://www.npmjs.com/package/browserslist)文件。 不同的工具都可以识别这个定义，包括*autoprefixer*。
+如果您明确知道需要支持哪些浏览器，则可以设置一个[browserslist](https://www.npmjs.com/package/browserslist)文件。不同的工具都可以识别这个定义，包括*autoprefixer*。
 
 {pagebreak}
 
