@@ -9,9 +9,13 @@ Frameworks like [Bootstrap](https://getbootstrap.com/) tend to come with a lot o
 
 [PurifyCSS](https://github.com/purifycss/purifycss)是一个通过分析文件来实现这个目的的插件。它遍历你的代码，找出哪些CSS被使用了。大多数时候，可以找到足够的信息来删除项目中未被使用的代码。在某种程度上，它也适用于单页应用程序。
 
-T> [uncss](https://www.npmjs.com/package/uncss) is a good alternative to PurifyCSS. It operates through PhantomJS and performs its work in a different manner. You can use uncss itself as a PostCSS plugin.
+[uncss](https://www.npmjs.com/package/uncss) is a good alternative to PurifyCSS. It operates through PhantomJS and performs its work in a different manner. You can use uncss itself as a PostCSS plugin.
 
-T> [uncss](https://www.npmjs.com/package/uncss)是另外一个很好的替代方案。它通过PhantomJS进行操作，以一种不同的方式来执行它的工作。你可以将它作为一个PostCSS的插件来使用。
+[uncss](https://www.npmjs.com/package/uncss)是另外一个很好的替代方案。它通过PhantomJS进行操作，以一种不同的方式来执行它的工作。你可以将它作为一个PostCSS的插件来使用。
+
+W> The approach does **not** work with CSS Modules and `ExtractTextPlugin` yet. See [issue 97](https://github.com/webpack-contrib/purifycss-webpack/issues/97) for more information.
+
+W> 该方式还**不能**同CSS Modules和`ExtractTextPlugin`一起使用。详情可查看[issue 97](https://github.com/webpack-contrib/purifycss-webpack/issues/97)。
 
 ## Setting Up Pure.css
 ## 设置Pure.css

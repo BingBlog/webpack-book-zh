@@ -134,16 +134,14 @@ Given this book receives a fair amount of maintenance and improvements due to th
 由于本书不断创新的步伐，并经过很多修补和改进，所以有很多个版本。我通过本书[官方博客](http://survivejs.com/blog/)对新老版本信息进行发布，版本信息会告诉你各个版本的差异。通过GitHub仓库检测也是一个很好的方法。推荐使用Github对比工具。例如：
 
 ```
-https://github.com/survivejs/webpack-book/compare/v1.9.0...v2.0.1
+https://github.com/survivejs/webpack-book/compare/v1.9.0...v2.0.8
 ```
 
 The page shows you the individual commits that went to the project between the given version range. You can also see the lines that have changed in the book.
 
-在浏览器中输入该地址，页面会向你展示两个版本的提交信息。你将看到本书每一行的更改
+The current version of the book is **2.0.8**.
 
-The current version of the book is **2.0.1**.
-
-本书当前的本书是2.0.1
+本书当前的本书是2.0.8
 
 ## Getting Support
 ## 得到支持
@@ -205,5 +203,7 @@ The book wouldn’t be half as good as it's without patient editing and feedback
 This book wouldn’t have been possible without the original "SurviveJS - Webpack and React" effort. Anyone who contributed to it deserves my thanks. You can check that book for more accurate attributions.
 
 没有最开始的版本"SurviveJS - Webpack and React"的努力。任何支持了那本书的人都应该得到我的致谢。你可以用那本书中得到更详细的原因。
+
+Thanks to Mike "Pomax" Kamermans, Cesar Andreu, Dan Palmer, Viktor Jančík, Tom Byrer, Christian Hettlage, David A. Lee, Alexandar Castaneda, Marcel Olszewski, Steve Schwartz, Chris Sanders, Charles Ju, Aditya Bhardwaj, Rasheed Bustamam, José Menor, Ben Gale, Jake Goulding, Andrew Ferk, gabo, Giang Nguyen, @Coaxial, @khronic, Henrik Raitasola, Gavin Orland, David Riccitelli, Stephen Wright, Majky Bašista, Gunnari Auvinen, Jón Levy, Alexander Zaytsev, Richard Muller, Ava Mallory (Fiverr), Sun Zheng’an, Nancy (Fiverr), Aluan Haddad, Steve Mao, Craig McKenna, Tobias Koppers, Stefan Frede, Vladimir Grenaderov, Scott Thompson, Rafael De Leon, and many others who have contributed direct feedback for this book!
 
 感谢 Mike "Pomax" Kamermans, Cesar Andreu, Dan Palmer, Viktor Jančík, Tom Byrer, Christian Hettlage, David A. Lee, Alexandar Castaneda, Marcel Olszewski, Steve Schwartz, Chris Sanders, Charles Ju, Aditya Bhardwaj, Rasheed Bustamam, José Menor, Ben Gale, Jake Goulding, Andrew Ferk, gabo, Giang Nguyen, @Coaxial, @khronic, Henrik Raitasola, Gavin Orland, David Riccitelli, Stephen Wright, Majky Bašista, Gunnari Auvinen, Jón Levy, Alexander Zaytsev, Richard Muller, Ava Mallory (Fiverr), Sun Zheng’an, Nancy (Fiverr), Aluan Haddad, Steve Mao, Craig McKenna, Tobias Koppers, Stefan Frede, Vladimir Grenaderov, Scott Thompson, and many others who have contributed direct feedback for this book!
