@@ -134,16 +134,14 @@ Given this book receives a fair amount of maintenance and improvements due to th
 由于本书不断创新的步伐，并经过很多修补和改进，所以有很多个版本。我通过本书[官方博客](http://survivejs.com/blog/)对新老版本信息进行发布，版本信息会告诉你各个版本的差异。通过GitHub仓库检测也是一个很好的方法。推荐使用Github对比工具。例如：
 
 ```
-https://github.com/survivejs/webpack-book/compare/v1.9.0...v2.0.6
+https://github.com/survivejs/webpack-book/compare/v1.9.0...v2.0.8
 ```
 
 The page shows you the individual commits that went to the project between the given version range. You can also see the lines that have changed in the book.
 
-在浏览器中输入该地址，页面会向你展示两个版本的提交信息。你将看到本书每一行的更改
+The current version of the book is **2.0.8**.
 
-The current version of the book is **2.0.6**.
-
-本书当前的本书是2.0.6
+本书当前的本书是2.0.8
 
 ## Getting Support
 ## 得到支持

@@ -35,8 +35,6 @@ export default class App extends React.Component {
       lines: [],
       results: [],
     };
-
-    this.onChange = this.onChange.bind(this);
   }
   render() {
     const { results, value } = this.state;
@@ -48,7 +46,7 @@ export default class App extends React.Component {
           <input
             type="text"
             value={value}
-            onChange={this.onChange} />
+            onChange={e => this.onChange(e)} />
         </div>
         <div className="results-container">
           <Results results={results} />
@@ -118,6 +116,8 @@ function loadIndex() {
 ```
 
 In the example, webpack detects the `import` statically. It can generate a separate bundle based on this split point. Given it relies on static analysis, you cannot generalize `loadIndex` in this case and pass the search index path as a parameter.
+
+{pagebreak}
 
 ## Conclusion
 
