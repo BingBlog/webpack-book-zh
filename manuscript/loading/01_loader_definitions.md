@@ -1,20 +1,39 @@
 # Loader Definitions
+# 加载器定义
 
 Webpack provides multiple ways to set up module loaders. Webpack 2 simplified the situation by introducing the `use` field. The legacy options (`loader` and `loaders`) still work, though. I’ll discuss all the options for completeness, as you may see them in existing configurations.
 
+Webpack提供了多种方式来设置模块化加载器。Webpack2通过引入`use`字段来简化了形式。遗留下来的选项（`loader` 和 `loaders`）仍然有效。由于你将在很多已经存在的配置中看到它们，为了确保完整性我将讨论所有的选项。
+
 It can be a good idea to prefer absolute paths here as they allow you to move configuration without breaking assumptions. The other option is to set `context` field as this gives a similar effect and affects the way entry points and loaders are resolved. It won’t have an impact on the output, though, and you still need to use an absolute path or `/` there.
+
+使用绝对路径是一个好主意，可以让你在不破坏假设的情况下移动配置文件。另外一个选项就是设置`context`字段，可以实现类似的效果，并影响入口文件和加载器被处理的方式。但是对输出不会有任何影响，所以，仍然需要在那里使用绝对路径或者`/`。
 
 Assuming you set an `include` or `exclude` rule, packages loaded from *node_modules* will still work as the assumption is that they have been compiled in such way that they work out of the box. Sometimes you may come upon a poorly packaged one, but often you can work around these by tweaking your loader configuration or setting up a `resolve.alias` against an asset that is included in the offending package.
 
+假设你设置了一个`include`或者`exclude`规则，从*node_modules*加载的代码包仍然会按照一个假设来处理，这个假设是它们已经被编译了，可以直接使用。有时你可能会遇到一个没有很好打包的代码，但是你可以通过调整加载器配置或者对包含在这个违反规则的代码包中的资源设置`resolve.alias`来解决这个问题。
+
+Translate> 作者这个地方表达的意思是，webpack默认是会遍历和处理*node_modules*这个文件夹中的文件的，但是如果你设置了`include`或者`exclude`规则来仅包含项目代码或者排除了*node_modules*目录，在项目中，我们通常用这样的方式来屏蔽*node_modules*目录。这个时候，webpack就会按照从*node_modules*目录中加载的文件都可以立即执行的假设来处理。如果你遇到了一些没有很好的被打包的代码，就需要你自己通过更改配置文件的加载器设置或者设置`resolve.alias`字段来解决这个问题。关于这个问题，可以[查看](https://github.com/webpack/webpack/issues/2031)
+
 T> The *Consuming Packages* chapter discusses the aliasing idea in further detail.
+
+T> *Consuming Packages*章节更加详细的讨论了别名的思想
 
 T> `include`/`exclude` is particularly useful with *node_modules* as webpack will process and traverse the installed packages by default when you import JavaScript files to your project. Therefore you need to configure it to avoid that behavior. Other file types don’t suffer from this issue.
 
+T> `include`/`exclude`对于*node_modules*来说特别有用，因为当你在项目中引入了JavaScript文件后，webpack会默认处理和遍历这些已经安装的代码包。因此，你需要通过配置来避免这个行为。其他的文件类型不会有这样的问题。
+
+
 ## Anatomy of a Loader
+## 解剖加载器
 
 Webpack supports a large variety of formats through *loaders*. Also, it supports a couple of JavaScript module formats out of the box. The idea is the same. You always set up a loader, or loaders, and connect those with your directory structure.
 
+Webpack支持各种类型的*加载器*。他还支持直接使用多种格式的JavaScript的模块。基本思想是相同的，设置加载器或者多个加载器，并将它们同你的目录结构联系起来。
+
 Consider the example below where webpack is set to process JavaScript through Babel:
+
+考虑如下的例子， 设置webpack通过Babel来处理JavaScript：
 
 **webpack.config.js**
 
@@ -67,13 +86,22 @@ module.exports = {
 
 T> If you are not sure how a particular RegExp matches, consider using an online tool, such as [regex101](https://regex101.com/) or [RegExr](http://regexr.com/).
 
+T> 如果你不确定一个特定的RegExp是如何匹配的，考虑使用一个在线工具，如[regex101](https://regex101.com/) 或者 [RegExr](http://regexr.com/)。
+
 T> Babel is discussed in detail in the *Loading JavaScript* chapter. We’ll attach it to the book project there.
 
+T> *Loading JavaScript*章节将会详细的讨论Babel。我们将会在那时将Babel添加到项目中。
+
 ## Loader Evaluation Order
+## 加载器的执行顺序
 
 It is good to keep in mind that webpack’s `loaders` are always evaluated from right to left and from bottom to top (separate definitions). The right-to-left rule is easier to remember when you think about as functions. You can read definition `use: ['style-loader', 'css-loader']` as `style(css(input))` based on this rule.
 
+webpack的加载器总是按照从右到左、从下到上（单独定义）的顺序执行。对于从右到左的规则，当你将其视为函数时，更容易记住。根据这条规则，你可以将定义`use: ['style-loader', 'css-loader']`读作`style(css(input))`。
+
 To see the rule in action, consider the example below:
+
+要查看这条执行规则，考虑下面的示例：
 
 ```javascript
 {
@@ -83,6 +111,8 @@ To see the rule in action, consider the example below:
 ```
 
 Based on the right to left rule, the example can be split up while keeping it equivalent:
+
+根据从右到左的规则，实例可以被拆分等同的规则：
 
 ```javascript
 {
@@ -96,8 +126,11 @@ Based on the right to left rule, the example can be split up while keeping it eq
 ```
 
 ### Enforcing Order
+### 强制顺序
 
 Even though it would be possible to develop an arbitrary configuration using the rule above, it can be convenient to be able to force certain rules to be applied before or after regular ones. The `enforce` field can come in handy here. It can be set to either `pre` or `post` to push processing either before or after other loaders.
+
+
 
 We used the idea earlier in the *Linting JavaScript* chapter. Linting is a good example as the build should fail before it does anything else. Using `enforce: 'post'` is rarer and it would imply you want to perform a check against the built source. Performing analysis against the built source is one potential example.
 
