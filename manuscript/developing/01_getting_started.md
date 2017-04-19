@@ -1,18 +1,24 @@
-# Getting Started
+# 开始(Getting Started)
 
 Before getting started, make sure you are using a recent version of [Node](http://nodejs.org/). You should use at least the most current LTS (long-term support) version. The configuration of the book has been written Node 6 features in mind. You should have `node` and `npm` commands available at your terminal. [Yarn](https://yarnpkg.com/) is a good alternative to npm and works for the tutorial as well.
+在开始前，请确认你目前使用的[Node](http://nodejs.org/)是最新版本。至少，目前使用的也应该是lts最新版本。在命令行中，你应该可以使用`node`和`npm`命令。对于本书的教程，[Yarn](https://yarnpkg.com/)也是一个好的选择。
 
 It's possible to get a more controlled environment by using a solution such as [Docker](https://www.docker.com/), [Vagrant](https://www.vagrantup.com/) or [nvm](https://www.npmjs.com/package/nvm). Vagrant comes with a performance penalty as it relies on a virtual machine. Vagrant is valuable in a team: each developer can have the same environment that is usually close to production.
+通过使用[Docker](https://www.docker.com/),[Vagrant](https://www.vagrantup.com/)，[nvm](https://www.npmjs.com/package/nvm)等工具，我们可以构建更加灵活的环境。由于基于虚拟机的原因，Vagrant有一定的性能劣势。但是某种意义上(每一个开发者可以拥有线上开发环境的副本)，Vagrant还是有价值的。
+
 
 T> The completed configuration is available at [GitHub](https://github.com/survivejs-demos/webpack-demo).
+T> 完整的配置文件可以在[Github](https://github.com/survivejs-demos/webpack-demo)上找到
 
 W> If you are using an older version than Node 6, you have to adapt the code or process your webpack configuration through Babel as discussed in the *Loading JavaScript* chapter.
+W> 如果你使用的node版本低于6.x，你必须修改你的代码或者使用Babel对配置文件进行处理，详情可看 *Loading JavaScript* 章节。
 
 {pagebreak}
 
-## Setting Up the Project
+## 搭建项目(Setting Up the Project)
 
 To get a starting point, you should create a directory for the project and set up a *package.json* there. npm uses that to manage project dependencies. Here are the basic commands:
+开始之前，你应该为该项目创建一个文件夹并且在里面放入*package.json*文件.npm使用该文件进行项目依赖管理.这里介绍一些基本的命令:
 
 ```bash
 mkdir webpack-demo
@@ -21,10 +27,13 @@ npm init -y # -y generates *package.json*, skip for more control
 ```
 
 You can tweak the generated *package.json* manually to make further changes to it even though a part of the operations modify the file automatically for you. The official documentation explains [package.json options](https://docs.npmjs.com/files/package.json) in more detail.
+即使npm已经帮你对package.json做了一些配置，你仍然可以对自动生成的配置项进行修改。官网对[package.json配置](https://docs.npmjs.com/files/package.json)进行了详细的阐述。
 
 T> You can set those `npm init` defaults at *~/.npmrc*.
+T> 在*~/.npmrc*文件中，你可以默认加入`npm init`
 
 T> This is a good place to set up version control using [Git](https://git-scm.com/). You can create a commit per step and tag per chapter, so it's easier to move back and forth if you want.
+T> 使用版本管理工具[Git](https://git-scm.com/)是个好习惯。每一章节你都一个创建一个commit和tag，方便你在不同版本间跳转。
 
 ## Installing Webpack
 
