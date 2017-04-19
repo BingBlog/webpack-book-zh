@@ -274,7 +274,8 @@ const src = require(`./avatars/${avatar}`);
 
 [webpack-spritesmith](https://www.npmjs.com/package/webpack-spritesmith) converts provided images into a sprite sheet and Sass/Less/Stylus mixins. You have to set up a `SpritesmithPlugin`, point it to target images, and set the name of the generated mixin. After that, your styling can pick it up:
 
-[webpack-spritesmith](https://www.npmjs.com/package/webpack-spritesmith)
+[webpack-spritesmith](https://www.npmjs.com/package/webpack-spritesmith)将所提供的图片转换为sprite表并和Sass/Less/Stylus结合起来。你需要设置`SpritesmithPlugin`插件，指向目标图片，并设置生成的混合文件。然后，你的样式文件就可以查找到这些图片了：
+
 
 ```sass
 @import '~sprite.sass';
@@ -289,22 +290,43 @@ const src = require(`./avatars/${avatar}`);
 ```
 
 ## Images and *css-loader* Source Map Gotcha
+## 图片和*css-loader*的Source Map的疑惑
 
 If you are using images and *css-loader* with the `sourceMap` option enabled, it's important that you set `output.publicPath` to an absolute value pointing to your development server. Otherwise, images aren't going to work. See [the relevant webpack issue](https://github.com/webpack/style-loader/issues/55) for further explanation.
+
+如果你将图片和*css-loader*一起使用，并开启了*css-loader*的`sourceMap`选项，那么将`output.publicPath`设置为一个指向你的开发服务器的绝对路径就很重要了。否则，图片将不会生效。详细解释请看这个[已知的问题](https://github.com/webpack/style-loader/issues/55)。
 
 {pagebreak}
 
 ## Conclusion
+##  小结
 
 Webpack allows you to inline images within your bundles when needed. Figuring out proper inlining limits for your images requires experimentation. You have to balance between bundle sizes and the number of requests.
 
+Webpack可以让你在需要的时候将图片内联到代码包中。总结出一个合适的将图片内联的限制值需要一些尝试。你需要权衡代码包的体积和请求的数量。
+
 To recap:
 
+回顾：
+
 * *url-loader* inlines the assets within JavaScript. It comes with a `limit` option that allows you to defer assets above it to *file-loader*.
+* *url-loader*将资源内联到JavaScript代码中。它提供了一个`limit`选线，可以让你将上述的资源延迟交给*file-loader*处理。
+
 * *file-loader* emits image assets and returns paths to them to the code. It allows hashing the asset names.
+* *file-loader* 生成图片资源并想代码返回资源的路径。它还可以像资源名称中增加哈希值。
+
 * You can find image optimization related loaders and plugins that allow you to tune their size further.
+* 你可以找到图片优化相关的加载器和插件，他们使你可以进一步调节图片的大小。
+
 * It's possible to generate **sprite sheets** out of smaller images to combine them into a single request.
+* 可以将很多小图片组合成一个单独的图片来生成**sprite sheets**
+
 * Webpack allows you to load images dynamically based on a given condition.
+* Webpack使你可以基于给定的条件来动态的加载图片
+
 * If you are using source maps, you should remember to set `output.publicPath` to an absolute value for the images to show up.
+* 如果你使用了source maps，你要记住将`output.publicPath`设置为一个绝对路径以保证图片可以显示。
 
 You'll learn to load fonts using webpack in the next chapter.
+
+你将在下一章节学习如何使用webpack来加载字体。
