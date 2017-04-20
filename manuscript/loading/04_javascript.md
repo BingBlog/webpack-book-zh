@@ -1,8 +1,13 @@
 # Loading JavaScript
+# 加载JavaScript
 
 Webpack processes ES6 module definitions by default and transforms them into code. It does **not** transform ES6 specific syntax apart, such as `const`. The resulting code can be problematic especially in the older browsers.
 
+Webpack默认就可以处理ES6模块化定义并将其转化为代码。但是它并不会转化那些ES6特定的语法，如`const`。最终导致代码会有很多问题，特别是在一些老的浏览器中。
+
 To get a better idea of the default transform, consider the example output below:
+
+为了更好地理解默认的转换机制，思考如下的输出：
 
 **build/app.js**
 
@@ -27,25 +32,45 @@ webpackJsonp([1],{
 
 The problem can be worked around by processing the code through [Babel](https://babeljs.io/), a popular JavaScript compiler that supports ES6 features and more. It resembles ESLint in that it's built on top of presets and plugins. Presets are collections of plugins, and you can define your own as well.
 
+这个问题可以通过使用[Babel](https://babeljs.io/)对代码进行处理来解决，Babel是一个很受欢迎的JavaScript编译器，它支持ES6以及其它的特性。它类似于ESLint，因为它建立在预设（preset）和插件的基础上。预设是插件的集合，你也可以定义自己的预设。
+
 T> Given sometimes extending existing presets is not be enough, [modify-babel-preset](https://www.npmjs.com/package/modify-babel-preset) allows you to go a step further and configure the base preset in a more flexible way.
 
+T> 由于有时候扩展已有的预设并不足以满足需要，[modify-babel-preset](https://www.npmjs.com/package/modify-babel-preset)允许你更进一步，以更灵活的方式来配置一个基本的预设。
+
 ## Using Babel with Webpack Configuration
+## 结合Webpack配置使用Babel
 
 Even though Babel can be used standalone, as you can see in the *Package Authoring Techniques* chapter, you can hook it up with webpack as well. During development, it can make sense to skip processing if you are using language features supported by your browser.
 
+如你将在*Package Authoring Techniques*章节看到的，尽管Babel可以被单独使用，你也可以将其挂在到webpack上。在开发环境中，如果你使用的是你的浏览器可以支持的语言特性，忽略处理也是有意义的。
+
 Skipping processing is a good option especially if you don't rely on any custom language features and work using a modern browser. Processing through Babel becomes almost a necessity when you compile your code for production, though.
+
+如果你不依赖于任何特别的语言特性，并使用现代浏览器进行开发，忽略处理是一个不错的选择。但是为了在生产环境中正常运行，编译代码时通过Babel进行处理就变得很有必要了。
 
 You can use Babel with webpack through [babel-loader](https://www.npmjs.com/package/babel-loader). It can pick up project level Babel configuration or you can configure it at the webpack loader itself. [babel-webpack-plugin](https://www.npmjs.com/package/babel-webpack-plugin) is another lesser known option.
 
+可以在webpack中通过[babel-loader](https://www.npmjs.com/package/babel-loader)来使用Babel。它可以查找系统级别的Babel配置，或者你也可以在webpack的加载器自身中配置它。[babel-webpack-plugin](https://www.npmjs.com/package/babel-webpack-plugin)是另外一个较少为人知晓的选项。
+
 Connecting Babel with a project allows you to process webpack configuration through it. To achieve this, name your webpack configuration using the *webpack.config.babel.js* convention. [interpret](https://www.npmjs.com/package/interpret) package enables this and it supports other compilers as well.
+
+将Babel和项目结合起来后，你可以通过它来处理你的webpack配置文件。为了实现这个，可以将你的webpack配置文件用约定的*webpack.config.babel.js*来命名。[interpret](https://www.npmjs.com/package/interpret)可以提供支持而且也支持其他的编译器。
 
 T> Given that [Node supports the ES6 specification well](http://node.green/) these days, you can use a lot of ES6 features without having to process configuration through Babel.
 
+T> 由于目前[Node已经能够很好地支持ES6规范](http://node.green/)，你可以不用通过Babel对webpack配置进行处理，就可以使用很多ES6特性。
+
 T> Babel isn't the only option although it's the most popular one. [Buble](https://buble.surge.sh) by Rich Harris is another compiler worth checking out. There's experimental [buble-loader](https://www.npmjs.com/package/buble-loader) that allows you to use it with webpack. Buble doesn't support ES6 modules, but that's not a problem as webpack provides that functionality.
+
+T> 尽管Babel是最受欢迎的，但不是唯一的选择。Rich Harris的[Buble](https://buble.surge.sh)是另外一个值得尝试的编译器。试验中的[buble-loader](https://www.npmjs.com/package/buble-loader)可以让你通过webpack使用它。Buble不支持ES6模块，但因为webpack提供了对应的功能所以不会造成什么问题。
 
 W> If you use *webpack.config.babel.js*, take care with the `"modules": false,` setting. If you want to use ES6 modules, you could skip the setting in your global Babel configuration and then configure it per environment as discussed below.
 
+W> 如果你使用了*webpack.config.babel.js*，请注意`"modules": false,`的设置。如果你希望使用ES6模块化，你可以在全局的Babel配置中忽略这个设置，并在每个环境中如下面讨论的那样配置。
+
 ### Setting Up *babel-loader*
+### 设置*babel-loader*
 
 The first step towards configuring Babel to work with webpack is to set up [babel-loader](https://www.npmjs.com/package/babel-loader). It takes the code and turns it into a format older browsers can understand. Install *babel-loader* and include its peer dependency *babel-core*:
 
