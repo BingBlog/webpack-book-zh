@@ -61,13 +61,13 @@ Even though having a look at the file itself gives you idea of what's going on, 
 
 ### The Official Analyse Tool
 
-![The Official Analyse Tool](images/analyse.png)
+![The Official Analyse Tool](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/develop/manuscript/images/analyse.png)
 
 [The official analyse tool](https://github.com/webpack/analyse) gives you recommendations and a good idea of your application's dependency graph. It can be run locally as well.
 
 ### Webpack Visualizer
 
-![Webpack Visualizer](images/webpack-visualizer.png)
+![Webpack Visualizer](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/develop/manuscript/images/webpack-visualizer.png)
 
 [Webpack Visualizer](https://chrisbateman.github.io/webpack-visualizer/) provides a pie chart showing your bundle composition allowing to understand which dependencies contribute to the size of the overall result.
 
@@ -77,7 +77,7 @@ Even though having a look at the file itself gives you idea of what's going on, 
 
 ### Webpack Chart
 
-![Webpack Chart](images/webpack-chart.png)
+![Webpack Chart](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/develop/manuscript/images/webpack-chart.png)
 
 [Webpack Chart](https://alexkuz.github.io/webpack-chart/) is another similar visualization.
 
@@ -87,7 +87,7 @@ Even though having a look at the file itself gives you idea of what's going on, 
 
 ### Stellar Webpack
 
-![Stellar Webpack](images/stellar-webpack.jpg)
+![Stellar Webpack](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/develop/manuscript/images/stellar-webpack.jpg)
 
 [Stellar Webpack](https://alexkuz.github.io/stellar-webpack/) gives a universe based visualization and allows you to examine your application in a 3D form.
 
@@ -97,7 +97,7 @@ Even though having a look at the file itself gives you idea of what's going on, 
 
 ### webpack-bundle-analyzer
 
-![webpack-bundle-analyzer](images/webpack-bundle-analyzer.jpg)
+![webpack-bundle-analyzer](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/develop/manuscript/images/webpack-bundle-analyzer.jpg)
 
 [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) provides a zoomable treemap.
 
@@ -148,7 +148,7 @@ In addition to tools that work with webpack output, there are a couple that are 
 
 ### madge
 
-![madge](images/madge.png)
+![madge](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/develop/manuscript/images/madge.png)
 
 [madge](https://www.npmjs.com/package/madge) is another independent tool that can output a graph based on module input. The graph output allows you to understand the dependencies of your project in greater detail.
 
