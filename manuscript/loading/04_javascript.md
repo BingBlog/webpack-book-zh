@@ -74,6 +74,8 @@ W> 如果你使用了*webpack.config.babel.js*，请注意`"modules": false,`的
 
 The first step towards configuring Babel to work with webpack is to set up [babel-loader](https://www.npmjs.com/package/babel-loader). It takes the code and turns it into a format older browsers can understand. Install *babel-loader* and include its peer dependency *babel-core*:
 
+配置Babel与webpack一起工作的第一步就是设置[babel-loader](https://www.npmjs.com/package/babel-loader)。它将代码转换为老的浏览器可以理解的格式。如下安装*babel-loader*和其对应的依赖*babel-core*：
+
 ```bash
 npm install babel-loader babel-core --save-dev
 ```
@@ -81,6 +83,8 @@ npm install babel-loader babel-core --save-dev
 {pagebreak}
 
 As usual, let's define a part for Babel:
+
+和前面的一样，为Babel定义一个方法：
 
 **webpack.parts.js**
 
@@ -110,6 +114,8 @@ exports.loadJavaScript = ({ include, exclude }) => ({
 
 Next, you need to connect this with the main configuration. If you are using a modern browser for development, you can consider processing only the production code through Babel. To play it safe, it's used for both production and development environments in this case. In addition, only application code is processed through Babel.
 
+接下来，需要将其挂在到主配置文件中。如果你在开发时使用的是一个现代浏览器，你可以考虑只用Babel对生产环境的代码进行处理。为了确保可以正常运行，这里在开发环境和生产环境都使用了Babel。补充一下，只有应用的代码通过Babel进行了处理。
+
 {pagebreak}
 
 Adjust as below:
@@ -128,9 +134,15 @@ leanpub-end-insert
 
 Even though you have Babel installed and set up, you are still missing one bit: Babel configuration. This can be achieved using a *.babelrc* dotfile as other tooling can pick it up as well.
 
+尽管你已经安装并设置了Babel，你仍然忽略了一件事：Babel的配置。可以使用*.babelrc*文件来实现，这个文件也支持其它工具。
+
 W> There are times when caching Babel compilation can surprise you if your dependencies change in a way that *babel-loader* default caching mechanism doesn't notice. Override `cacheIdentifier` with a string that has been derived based on data that should invalidate the cache for better control. [Node crypto API](https://nodejs.org/api/crypto.html) and especially its MD5 related functions can come in handy.
 
+W> 有时候缓存Bable编译会让你感到惊讶，果你的依赖发生了改变，但是*babel-loader*的默认缓存机制可能没有注意到这个变化。用一个数据的字符串来改写`cacheIdentifier`字段，该字符串可以使缓存无效以便更好的控制缓存。[Node crypto API](https://nodejs.org/api/crypto.html),尤其是MD5相关的功能特别有用。
+
 W> If you try to import files **outside** of your configuration root directory and then process them through *babel-loader*, this fails. It's [a known issue](https://github.com/babel/babel-loader/issues/313), and there are workarounds including maintaining *.babelrc* at a higher level in the project and resolving against Babel presets through `require.resolve` at webpack configuration.
+
+W> 如果你希望引入在配置文件根目录**之外**的文件，然后通过*babel-loader*对其进行处理，将会失败。这是一个[已知的问题](https://github.com/babel/babel-loader/issues/313)，有几种解决办法，包括在比项目更高一层的目录中来维护*.babelrc*文件，在webpack的配置中通过`require.resolve`对Babel预设
 
 ### Setting Up *.babelrc*
 
