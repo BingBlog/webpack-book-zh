@@ -50,6 +50,8 @@ leanpub-end-delete
 },
 ```
 
+T> WDS picks up configuration like webpack itself. The same rules apply.
+
 If you execute either *npm run start* or *npm start* now, you should see something in the terminal:
 
 ```bash
@@ -76,15 +78,11 @@ The server is running and if you open `http://localhost:8080/` at your browser, 
 
 If you try modifying the code, you should see output in your terminal. The browser should also perform a hard refresh on change.
 
-T> WDS tries to run in another port in case the default one is being used. See the terminal output to figure out where it ends up running. You can debug the situation with a command like `netstat -na | grep 8080`. If something is running on the port 8080, it should display a message. The exact command depends on the platform.
-
-T> If you want to open a browser tab directly after running the server, set `devServer.open: true`. You can also achieve the same result through the CLI by using `webpack-dev-server --open`.
-
-{pagebreak}
+WDS tries to run in another port in case the default one is being used. The terminal output tells you where it ends up running. You can debug the situation with a command like `netstat -na | grep 8080`. If something is running on the port 8080, it should display a message on Unix.
 
 ## Verifying that `--env` Works
 
-Webpack configuration receives the result of `--env` if it exposes a function. To check that the correct environment is passed, adjust the configuration as follows:
+Webpack configuration is able to receive the value of `--env` if the configuration is defined within a function. To check that the correct environment is passed, adjust the configuration as follows:
 
 **webpack.config.js**
 
@@ -98,18 +96,7 @@ leanpub-end-delete
 leanpub-start-insert
 const commonConfig = {
 leanpub-end-insert
-  entry: {
-    app: PATHS.app,
-  },
-  output: {
-    path: PATHS.build,
-    filename: '[name].js',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Webpack demo',
-    }),
-  ],
+  ...
 };
 
 leanpub-start-insert
@@ -120,8 +107,6 @@ module.exports = (env) => {
 };
 leanpub-end-insert
 ```
-
-{pagebreak}
 
 If you run the npm commands now, you should see a different terminal output depending on which one you trigger:
 
@@ -230,11 +215,9 @@ It's possible to customize host and port settings through the environment in the
 
 To access your server, you need to figure out the ip of your machine. On Unix, this can be achieved using `ifconfig | grep inet`. On Windows, `ipconfig` can be utilized. An npm package, such as [node-ip](https://www.npmjs.com/package/node-ip) come in handy as well. Especially on Windows, you need to set your `HOST` to match your ip to make it accessible.
 
-{pagebreak}
-
 ## Making It Faster to Develop Configuration
 
-WDS will handle restarting the server when you change a bundled file, but what about when you edit the webpack config? Restarting the development server each time you make a change tends to get boring after a while; therefore, it can be a good idea to let automate it. As [discussed in GitHub](https://github.com/webpack/webpack-dev-server/issues/440#issuecomment-205757892), [nodemon](https://www.npmjs.com/package/nodemon) monitoring tool can be used for this purpose.
+WDS will handle restarting the server when you change a bundled file, but what about when you edit the webpack config? Restarting the development server each time you make a change tends to get boring after a while. This can be automated as [discussed in GitHub](https://github.com/webpack/webpack-dev-server/issues/440#issuecomment-205757892) by using [nodemon](https://www.npmjs.com/package/nodemon) monitoring tool.
 
 To get it to work, you have to install it first through `npm install nodemon --save-dev`. After that, you can make it watch webpack config and restart WDS on change. Here's the script if you want to give it a go:
 
@@ -247,7 +230,7 @@ To get it to work, you have to install it first through `npm install nodemon --s
 },
 ```
 
-It's possible WDS [will support the functionality](https://github.com/webpack/webpack/issues/3153) itself in the future. If you want to make it reload itself on change, you should implement a workaround for now.
+It's possible WDS [will support the functionality](https://github.com/webpack/webpack/issues/3153) itself in the future. If you want to make it reload itself on change, you should implement this workaround for now.
 
 {pagebreak}
 
@@ -313,7 +296,7 @@ T> [The official documentation](https://webpack.js.org/configuration/dev-server/
 
 ## Development Plugins
 
-As webpack plugin ecosystem is diverse, there are a lot of plugins that can help specifically with development:
+The webpack plugin ecosystem is diverse and there are a lot of plugins that can help specifically with development:
 
 * [case-sensitive-paths-webpack-plugin](https://www.npmjs.com/package/case-sensitive-paths-webpack-plugin) can be handy when you are developing on a case-insensitive environments like macOS or Windows but using case-sensitive environment like Linux for production.
 * [npm-install-webpack-plugin](https://www.npmjs.com/package/npm-install-webpack-plugin) allows webpack to install and wire the installed packages with your *package.json* as you import new packages to your project.

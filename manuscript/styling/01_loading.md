@@ -34,9 +34,12 @@ To get started, invoke
 npm install css-loader style-loader --save-dev
 ```
 
-Now let's make sure webpack is aware of them. Configure as follows:
+[!delete] Now let's make sure webpack is aware of them. Configure as follows:
 
-现在，我们需要确认webpack能够识别它们。如下配置：
+[!delete] 现在，我们需要确认webpack能够识别它们。如下配置：
+
+Now let's make sure webpack is aware of them. Add a new function at the end of the part definition:
+
 
 **webpack.parts.js**
 
@@ -126,16 +129,21 @@ Perhaps the biggest challenge of CSS is that all rules exist within **global sco
 
 也许，CSS最大的挑战就是所有规则都存在于**全局**中，这意味着具有相同名称的两个类将会相互冲突。这个限制源自于CSS规范，但有些项目也在解决这个问题。[CSS Modules](https://github.com/css-modules/css-modules)为每个模块引入**局部规则**，通过对每个类的声明中添加一个对该模块来说全局唯一的哈希值，来使每个类的声明都是唯一的。
 
-Webpack's *css-loader* supports CSS Modules. You can enable it through a loader definition:
+[!change] Webpack's *css-loader* supports CSS Modules. You can enable it through a loader 
+definition:
 
-Webpack的*css-loader*支持CSS模块。您可以通过对加载器进行修改，设置如下配置项来启用它：
+[!change] Webpack的*css-loader*支持CSS模块。您可以通过对加载器进行修改，设置如下配置项来启用它：
+
+Webpack's *css-loader* supports CSS Modules. You can enable it through a loader definition as above while enabling the support:
 
 ```javascript
 {
   loader: 'css-loader',
+leanpub-start-insert
   options: {
     modules: true,
   },
+leanpub-end-insert
 },
 ```
 
