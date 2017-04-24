@@ -35,25 +35,30 @@ T> 在*~/.npmrc*文件中，你可以默认加入`npm init`
 T> This is a good place to set up version control using [Git](https://git-scm.com/). You can create a commit per step and tag per chapter, so it's easier to move back and forth if you want.
 T> 使用版本管理工具[Git](https://git-scm.com/)是个好习惯。每一章节你都一个创建一个commit和tag，方便你在不同版本间跳转。
 
-## Installing Webpack
+## 安装Webpack(Installing Webpack)
 
 Even though webpack can be installed globally (`npm install webpack -g`), it's a good idea to maintain it as a dependency of your project to avoid issues, as then you have control over the exact version you are running. The approach works nicely in **Continuous Integration** (CI) setups as well. A CI system can install your local dependencies, compile your project using them, and then push the result to a server.
+虽然Webpack可以全局安装(`npm install webpack -g`)，但最佳实践告诉我们本地安装webpack作为一种好的方法可以避免很多问题，因为我们可以精确的控制我们想要的版本。在**Continuous Integration**章节中，使用该步骤将会非常方便。一个自动化集成系统可以安装你本地依赖，编译你的项目，并把最终编译包推送到服务器上。
 
 {pagebreak}
 
 To add webpack to the project, execute:
+给一个项目添加webpack,执行:
 
 ```bash
 npm install webpack --save-dev # -D if you want to save typing
 ```
 
 You should see webpack at your *package.json* `devDependencies` section after this. In addition to installing the package locally below the *node_modules* directory, npm also generates an entry for the executable.
+执行完上述命令后，你将会在*package.json*文件中的`devDependencies`选项中看到webpack。除了在本地的*node_modules*文件夹中安装了webpack之外，npm也给webpack创建了一个执行入口。
 
-## Executing Webpack
+## 执行Webpack(Executing Webpack)
 
 You can display the exact path of the executables using `npm bin`. Most likely it points at *./node_modules/.bin*. Try running webpack from there through the terminal using `node_modules/.bin/webpack` or a similar command.
+你可以通过`npm bin`来显示精确的执行路径。通常，会在*./node_modules/.bin*目录下。尝试通过在命令行使用`node_modules/.bin/webpack`去运行webpack。
 
 After running, you should see a version, a link to the command line interface guide and an extensive list of options. Most aren't used in this project, but it's good to know that this tool is packed with functionality if nothing else.
+在运行`webpack`后，命令行中将出现版本号、帮助文档的链接以及一些命令选项。它们中大部分在本书中不使用，即便如此，了解一下总是好的。
 
 ```bash
 webpack-demo $ node_modules/.bin/webpack
