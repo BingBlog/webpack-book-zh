@@ -68,16 +68,23 @@ Use --help to display the CLI options.
 ```
 
 To get a quick idea of webpack output, try this:
+想迫不及待的看下webpack的输出，尝试下如下步骤：
 
 1. Set up *app/index.js* so that it contains `console.log('Hello world');`.
 2. Execute `node_modules/.bin/webpack app/index.js build/index.js`.
 3. Examine *build/index.js*. You should see webpack bootstrap code that begins executing the code. Below the bootstrap you should find something familiar.
 
-T> You can use `--save` and `--save-dev` to separate application and development dependencies. The former installs and writes to *package.json* `dependencies` field whereas the latter writes to `devDependencies` instead.
+1. 在app文件夹下新建一个包含`console.log('Hello world')`的index.js文件.
+2. 执行`node_modules/.bin/webpack app/index.js build/index.js`.
+3. 查看*build/index.js*.
 
-## Directory Structure
+T> You can use `--save` and `--save-dev` to separate application and development dependencies. The former installs and writes to *package.json* `dependencies` field whereas the latter writes to `devDependencies` instead.
+T> 你可以使用`--save`和`--save-dev`对线上和开发环境的依赖进行区分。前者把依赖包写入`dependencies`字段，而后者写入到`devDependencies`字段中。
+
+## 目录结构(Directory Structure)
 
 To move further, you can implement a site that loads JavaScript, which you then build using webpack. After you progress a bit, you end up with a directory structure below:
+更进一步，你可以尝试自己用webpack去构建一个网站，项目的目录结构大致如下:
 
 * app/
   * index.js
@@ -87,10 +94,12 @@ To move further, you can implement a site that loads JavaScript, which you then 
 * webpack.config.js
 
 The idea is that you transform *app/* to a bundle below *build/*. To make this possible, you should set up the assets needed and configure webpack through *webpack.config.js*.
+如果想把*app*下的文件打包到*build/*文件夹下，我们可以在*webpack.config.js*文件中进行相关配置。
 
-## Setting Up Assets
+## 开始Coding(Setting Up Assets)
 
 As you never get tired of `Hello world`, you will model a variant of that. Set up a component:
+如果你还没有厌烦`Hello world`的话，你可以用它声明一个变量。构建一个组件:
 
 **app/component.js**
 
@@ -116,11 +125,13 @@ import component from './component';
 document.body.appendChild(component());
 ```
 
-## Setting Up Webpack Configuration
+## 配置Webpack(Setting Up Webpack Configuration)
 
 You need to tell webpack how to deal with the assets that were set up. For this purpose, you have to develop a *webpack.config.js* file. Webpack and its development server are able to discover this file through a convention.
+你需要告诉webpack如何对刚写的代码进行处理。为此，我们需要新建一个*webpack.config.js*文件。按照规范，webpack与webpack server都可以找到这个文件。
 
 To keep things convenient to maintain, you can use your first plugin: [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin). `HtmlWebpackPlugin` generates an *index.html* for the application and adds a `script` tag to load the generated bundle. Install it:
+为了便于维护，你可以使用plugin:[html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).`HtmlWebpackPlugin`将新建一个*index.html*文件，并通过script标签去加载打包后的文件。安装它:
 
 ```bash
 npm install html-webpack-plugin --save-dev
