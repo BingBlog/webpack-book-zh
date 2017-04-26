@@ -116,6 +116,7 @@ export default (text = 'Hello world') => {
 {pagebreak}
 
 Next, you are going to need an entry point for the application. It uses `require` against the component and renders it through the DOM:
+接下来，你需要为程序添加一个入口文件。它使用require去加载组件，并用dom方法把渲染在页面上:
 
 **app/index.js**
 
@@ -138,14 +139,18 @@ npm install html-webpack-plugin --save-dev
 ```
 
 At a minimum, it's nice to have at least `entry` and `output` fields in your configuration. Often you see a lot more as you specify how webpack deals with different file types and how it resolves them.
+在webpack的配置文件中，最少应该有`entry`和`output`这两个字段。通常，你会看到很多关于webpack针对不同文件类型的处理解析方式。
 
 Entries tell webpack where to start parsing the application. In multi-page applications, you have an entry per page. Or you could have a configuration per entry as discussed later in this chapter.
+入口`entry`会告诉webpack从哪里开始做解析。在多页面的程序中，针对每一个页面都会有一个入口文件。或者你可以采用本章节接下来讨论的，给每一个页面做相应的配置。
 
 All output related paths you see in the configuration are resolved against the `output.path` field. If you had an output relation option somewhere and wrote `styles/[name].css`, that would be expanded so that you get `<output.path> + <specific path>`. Example: *~/webpack-demo/build/styles/main.css*.
+通过`output.path`字段，你可以对输出文件的路径进行配置。如果你配置了改选项，并在一些地方写了`styles/[name].css`，解析后的路径应为`<output.path>+<specific path>`。例子：*~/webpack-demo/build/styles/main.css*.
 
 {pagebreak}
 
 To illustrate how to connect `entry` and `output` with `HtmlWebpackPlugin`, consider the code below:
+为了阐述如何把`entry`、`output`与`HtmlWebpackPlugin`这几个字段关联起来，分析如下代码：
 
 **webpack.config.js**
 
@@ -178,6 +183,7 @@ module.exports = {
 ```
 
 The `entry` path could be given as a relative one using the [context](https://webpack.js.org/configuration/entry-context/#context) field used to configure that lookup. However, given plenty of places expect absolute paths, preferring them over relative paths everywhere avoids confusion.
+在使用[context](https://webpack.js.org/configuration/entry-context/#context)后，`entry`字段可以采用相对路径。考虑到大部分场景下都采用绝对路径，为避免混淆，还是采用绝对路径对`entry`字段进行配置。
 
 T> **Trailing commas** are used in the book examples on purpose as it gives cleaner diffs for the code examples. You'll learn to enforce this rule in the *Linting JavaScript* chapter.
 
