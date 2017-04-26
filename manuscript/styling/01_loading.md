@@ -34,9 +34,12 @@ To get started, invoke
 npm install css-loader style-loader --save-dev
 ```
 
-Now let's make sure webpack is aware of them. Configure as follows:
+[!delete] Now let's make sure webpack is aware of them. Configure as follows:
 
-现在，我们需要确认webpack能够识别它们。如下配置：
+[!delete] 现在，我们需要确认webpack能够识别它们。如下配置：
+
+Now let's make sure webpack is aware of them. Add a new function at the end of the part definition:
+
 
 **webpack.parts.js**
 
@@ -118,7 +121,7 @@ Execute `npm start` now. Browse to `http://localhost:8080` if you are using the 
 You continue from here in the next chapter. Before that, though, you'll learn about styling-related techniques.
 下一章节，我们将会从此处继续。接下来，我将会讨论一些样式相关的技术。
 
-![Hello cornsilk world](images/hello_02.png)
+![Hello cornsilk world](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/hello_02.png)
 
 ## Understanding CSS Scoping and CSS Modules
 
@@ -126,16 +129,21 @@ Perhaps the biggest challenge of CSS is that all rules exist within **global sco
 
 也许，CSS最大的挑战就是所有规则都存在于**全局**中，这意味着具有相同名称的两个类将会相互冲突。这个限制源自于CSS规范，但有些项目也在解决这个问题。[CSS Modules](https://github.com/css-modules/css-modules)为每个模块引入**局部规则**，通过对每个类的声明中添加一个对该模块来说全局唯一的哈希值，来使每个类的声明都是唯一的。
 
-Webpack's *css-loader* supports CSS Modules. You can enable it through a loader definition:
+[!change] Webpack's *css-loader* supports CSS Modules. You can enable it through a loader 
+definition:
 
-Webpack的*css-loader*支持CSS模块。您可以通过对加载器进行修改，设置如下配置项来启用它：
+[!change] Webpack的*css-loader*支持CSS模块。您可以通过对加载器进行修改，设置如下配置项来启用它：
+
+Webpack's *css-loader* supports CSS Modules. You can enable it through a loader definition as above while enabling the support:
 
 ```javascript
 {
   loader: 'css-loader',
+leanpub-start-insert
   options: {
     modules: true,
   },
+leanpub-end-insert
 },
 ```
 
@@ -206,7 +214,7 @@ You can solve the problem by processing third party CSS differently through an `
 ## Loading Less
 ## 加载Less
 
-![Less](images/less.png)
+![Less](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/less.png)
 
 [Less](http://lesscss.org/) is a CSS processor packed with functionality. Using Less doesn't take a lot of effort through webpack as [less-loader](https://www.npmjs.com/package/less-loader) deals with the heavy lifting. You should install [less](https://www.npmjs.com/package/less) as well given it's a peer dependency of *less-loader*.
 
@@ -233,7 +241,7 @@ The loader supports Less plugins, source maps, and so on. To understand how thos
 
 ## 加载Sass
 
-![Sass](images/sass.png)
+![Sass](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/sass.png)
 
 [Sass](http://sass-lang.com/) is a widely used CSS preprocessor. You should use [sass-loader](https://www.npmjs.com/package/sass-loader) with it. Remember to install [node-sass](https://www.npmjs.com/package/node-sass) to your project as it's a peer dependency.
 
@@ -258,7 +266,7 @@ T> 如果您希望有更好的性能，尤其是在开发环境中，请查看[f
 
 ## Loading Stylus and Yeticss
 
-![Stylus](images/stylus.png)
+![Stylus](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/stylus.png)
 
 [Stylus](http://stylus-lang.com/) is yet another example of a CSS processor. It works well through [stylus-loader](https://www.npmjs.com/package/stylus-loader). [yeticss](https://www.npmjs.com/package/yeticss) is a pattern library that works well with it.
 
@@ -307,7 +315,7 @@ To start using yeticss with Stylus, you must import it to one of your app's *.st
 
 ## PostCSS
 
-![PostCSS](images/postcss.png)
+![PostCSS](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/postcss.png)
 
 [PostCSS](http://postcss.org/) allows you to perform transformations over CSS through JavaScript plugins. You can even find plugins that provide you Sass-like features. PostCSS is the equivalent of Babel for styling. [postcss-loader](https://www.npmjs.com/package/postcss-loader) allows using it with webpack.
 

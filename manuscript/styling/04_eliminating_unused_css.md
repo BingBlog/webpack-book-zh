@@ -13,9 +13,13 @@ Frameworks like [Bootstrap](https://getbootstrap.com/) tend to come with a lot o
 
 [uncss](https://www.npmjs.com/package/uncss)是另外一个很好的替代方案。它通过PhantomJS进行操作，以一种不同的方式来执行它的工作。你可以将它作为一个PostCSS的插件来使用。
 
-W> The approach does **not** work with CSS Modules and `ExtractTextPlugin` yet. See [issue 97](https://github.com/webpack-contrib/purifycss-webpack/issues/97) for more information.
+[!delete] W> The approach does **not** work with CSS Modules and `ExtractTextPlugin` yet. See [issue
+ 97](https://github.com/webpack-contrib/purifycss-webpack/issues/97) for more information.
 
-W> 该方式还**不能**同CSS Modules和`ExtractTextPlugin`一起使用。详情可查看[issue 97](https://github.com/webpack-contrib/purifycss-webpack/issues/97)。
+[!delete] W> 该方式还**不能**同CSS Modules和`ExtractTextPlugin`一起使用。详情可查看[issue 97](https://github
+.com/webpack-contrib/purifycss-webpack/issues/97)。
+
+W> You have to be careful if you are using CSS Modules. You have to **whitelist** the related classes as discussed in [purifycss-webpack readme](https://github.com/webpack-contrib/purifycss-webpack#usage-with-css-modules).
 
 ## Setting Up Pure.css
 ## 设置Pure.css
@@ -152,7 +156,7 @@ const productionConfig = merge([
   ...
 leanpub-start-insert
   parts.purifyCSS({
-    paths: glob.sync(`${PATHS.app}/**/*`, { nodir: true }),
+    paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
   }),
 leanpub-end-insert
 ]);

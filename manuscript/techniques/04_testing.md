@@ -8,7 +8,7 @@ You can find a lot of testing tools for JavaScript. The most popular options wor
 
 ## Mocha
 
-![Mocha](images/mocha.png)
+![Mocha](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/mocha.png)
 
 [Mocha](https://mochajs.org/) is a popular test framework for Node. While Mocha provides test infrastructure, you have to bring your asserts to it. Even though [Node assert](https://nodejs.org/api/assert.html) can be enough, there are good alternatives such as [power-assert](https://www.npmjs.com/package/power-assert), [Chai](http://chaijs.com/), or [Unexpected](http://unexpected.js.org/).
 
@@ -156,7 +156,7 @@ T> If you want to understand what `--hot` does better, see the *Hot Module Repla
 
 If you execute the server now and navigate to `http://localhost:8080/`, you should see the test:
 
-![Mocha in browser](images/mocha-browser.png)
+![Mocha in browser](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/mocha-browser.png)
 
 Adjusting either the test or the code should lead to a change in the browser. You can grow your specification or refactor the code while seeing the status of the tests.
 
@@ -169,7 +169,7 @@ On the downside, now you need a browser to examine the tests. *mocha-loader* is 
 
 ## Karma and Mocha
 
-![Karma](images/karma.png)
+![Karma](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/karma.png)
 
 [Karma](https://karma-runner.github.io/) is a test runner that allows you to run tests against real devices and [PhantomJS](http://phantomjs.org/), a headless browser. [karma-webpack](https://www.npmjs.com/package/karma-webpack) is a Karma preprocessor that allows you to connect Karma with webpack. The same benefits as before apply still. This time around, however, there is more control over the test environment.
 
@@ -403,13 +403,13 @@ T> If you want to emit the reports to specific directories below `dir`, set `sub
 
 If you execute karma now (`npm run test:karma`), you should see a new directory containing coverage reports. The HTML report can be examined through the browser.
 
-![Coverage in browser](images/coverage.png)
+![Coverage in browser](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/coverage.png)
 
 LCOV requires specific tooling to work. You can find editor plugins such as [lcov-info](https://atom.io/packages/lcov-info) for Atom. A properly configured plugin can give you coverage information while you are developing using the watch mode.
 
 ## Jest
 
-![Jest](images/jest.png)
+![Jest](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/jest.png)
 
 Facebook's [Jest](https://facebook.github.io/jest/) is an opinionated alternative that encapsulates functionality, including coverage and mocking, with minimal setup. It can capture snapshots of data making it valuable for projects where you have the behavior you would like to record and retain.
 
@@ -443,7 +443,7 @@ Porting a webpack setup to Jest requires more effort especially if you rely on w
 
 ## AVA
 
-![AVA](images/ava.png)
+![AVA](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/ava.png)
 
 [AVA](https://www.npmjs.com/package/ava) is a test runner that has been designed to take advantage of parallel execution. It comes with a test suite definition of its own. [webpack-ava-recipe](https://github.com/greyepoxy/webpack-ava-recipe) covers how to connect it with webpack.
 
