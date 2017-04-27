@@ -1,18 +1,30 @@
 # Source Maps
+# Source Maps
 
 ![Source maps in Chrome](images/sourcemaps.png)
 
 When your source code has gone through any transformations, debugging becomes a problem. When debugging in a browser, how to tell where the original code is? **Source maps** solve this problem by providing a mapping between the original and the transformed source code. In addition to source compiling to JavaScript, this works for styling as well.
 
+当你的源码经过任何转换后，调试就变成了一个问题。在浏览器中调试时，如何告知原始的代码在哪里？**Source maps**通过提供一个源码和转换后的代码的映射来解决这个问题。除了源码编译后的JavaScript，也可以支持styling。
+
 One approach is to simply skip source maps during development and rely on browser support of language features. If you use ES6 without any extensions and develop using a modern browser, this can work. The advantage of doing this is that you avoid all the problems related to source maps while gaining better performance.
+
+另一个办法是，在开发中忽略source map并仅依赖于浏览器支持的语言特性。如果你使用没有任何扩展的ES6并且使用现代浏览器，这种方法就可行。这样做的好处是避免了source map相关的所有问题且获得了更好地性能。
 
 T> If you want to understand the ideas behind source maps in greater detail, [read Ryan Seddon's introduction to the topic](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
 
+T> 如果你希望进一步了解source map背后的思想，可以阅读[Ryan Seddon对该话题的介绍](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)。
+
 ## Inline Source Maps and Separate Source Maps
+## 内联的Source Map和单独的Source Map
 
 Webpack can generate both inline source maps included within bundles or separate source map files. The former are valuable during development due to better performance while the latter are handy for production usage as it keeps the bundle size small. In this case, loading source maps is optional.
 
+Webpack可以生成包含在代码包中的内联的source map，也可以生成单独的source map文件。前者因较好的性能更适用于开发中，而后者可以保持较小的代码包体积因而在生产环境中特别有用。在次情况下，加载source map也是可选的。
+
 It's possible you **don't** want to generate a source map for your production bundle as this makes it effortless to inspect your application. By disabling them you are performing a sort of obfuscation. Whether or not you want to enable source maps for production, they are handy for staging. Skipping source maps entirely speeds up your build as generating source maps at the best quality can be a complex operation.
+
+你也可能并**不**想为你的生产环境代码包生成source map，因为它会使得窥探你的应用变得更加轻松。通过禁用它们，你实际上执行了一些迷惑措施。不论你是否在生产环境中使用source map，它们都可以分级。不启用source map将会极大的提高构建的速度，而想要以最好的质量来支持source map也将非常复杂。
 
 **Hidden source maps** give stack trace information only. You can connect them with a monitoring service to get traces as the application crashes allowing you to fix the problematic situations. While this isn't ideal, it's better to know about possible problems than not.
 

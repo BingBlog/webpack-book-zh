@@ -407,11 +407,9 @@ To recap:
 回归：
 
 * Babel gives you control over what browsers to support. It can compile ES6 features to a form the older browser understand. *babel-preset-env* is valuable as it can choose which features to compile and which polyfills to enable based on your browser definition.
-
 * Babel让你可以控制哪些浏览器将被支持。它可以将ES6的特性编译成老浏览器可以理解的形式。*babel-preset-env*是一个很有价值的预设，它可以基于你的浏览器定义来选择支持哪些特性和模拟实现的功能。
 
 * Babel allows you to use experimental language features. You can find numerous plugins that improve development experience and the production build through optimizations.
-
 * Babel可以让你使用实验阶段的语言特性。你可以找到很多插件来提升开发体验，并通过优化来提升生产构建的性能。
 
 * Babel functionality can be enabled per development target. This way you can be sure you are using the correct plugins at the right place.
