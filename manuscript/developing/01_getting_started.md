@@ -257,16 +257,36 @@ There are also specific plugins that extend `HtmlWebpackPlugin`'s functionality:
 * [resource-hints-webpack-plugin](https://www.npmjs.com/package/resource-hints-webpack-plugin) adds [resource hints](https://www.w3.org/TR/resource-hints/) to your HTML files to speed up loading time.
 * [preload-webpack-plugin](https://www.npmjs.com/package/preload-webpack-plugin) enables `rel=preload` capabilities for scripts. This helps with lazy loading and it combines well with techniques discussed in the *Building* part of this book.
 
-## Conclusion
+## 结论(Conclusion)
 
 Even though you have managed to get webpack up and running, it does not do that much yet. Developing against it would be painful. Each time you wanted to check out the application, you would have to build it manually using `npm run build` and then refresh the browser. That's where webpack's more advanced features come in.
 
+到目前，我们已经可以利用webpack简单的构建一个应用程序，但在实际开发中，远远不够。每次，在运行程序的时候，你都必须手动执行`npm run build`对程序进行打包，然后刷新浏览器。后面，我们会介绍webpack的其它功能，帮助我们提升开发效率。
+
 To recap:
 
+概述：
+
 * It's a good idea to use a locally installed version of webpack over a globally installed one. This way you can be sure of what version you are using. The local dependency works also in a Continuous Integration environment.
+
+* 本地安装指定版本的webpack是值得推荐的，因为你可以安装你想要的版本。并且，本地依赖包也能很好的在持续继承环境中工作。
+
 * Webpack provides a command line interface. You can use it even without configuration, but then you are limited by the options it provides.
+
+* Webpack 提供了命令行接口。虽然可以不依赖配置文件，但是命令行所提供的功能是有限的。
+
 * To write more complicated setups, you most likely have to write a separate *webpack.config.js* file.
+
+* 为了实现更多的功能，最好在将webpack的配置写入单独的*webpack.config.js*文件。
+
 * `HtmlWebpackPlugin` can be used to generate an HTML entry point to your application. Later in the book, you see how to generate multiple separate pages using. The *Multiple Pages* chapter covers that.
+
+* 利用`HtmlWebpackPlugin`，可以为应用程序创建一个入口html文件。在本书后面的*Multiple Pages*章节，将介绍如何创建多html文件。
+
 * It's handy to use npm *package.json* scripts to manage webpack. You can use it as a light task runner and use system features outside of webpack.
 
+* 使用npm的*package.json*文件管理webpack是非常方便的。可以把它当做轻量的任务管理器，并且可以使用一些webpack之外的系统功能。
+
 In the next chapter you will learn how to improve the developer experience by enabling automatic browser refresh.
+
+下一章，你将会学到如何利用浏览器自动刷新来提升开发效率。
