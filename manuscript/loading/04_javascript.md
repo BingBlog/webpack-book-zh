@@ -3,7 +3,7 @@
 
 Webpack processes ES6 module definitions by default and transforms them into code. It does **not** transform ES6 specific syntax apart, such as `const`. The resulting code can be problematic especially in the older browsers.
 
-Webpack默认就可以处理ES6模块化定义并将其转化为代码。但是它并不会转化那些ES6特定的语法，如`const`。最终导致代码会有很多问题，特别是在一些老的浏览器中。
+Webpack默认就可以处理ES6模块化定义并将其转化为普通的代码。但是它并不会转化那些ES6特定的语法，如`const`。导致代码会有很多问题，特别是在一些老的浏览器中。
 
 To get a better idea of the default transform, consider the example output below:
 
@@ -43,15 +43,15 @@ T> 由于有时候扩展已有的预设并不足以满足需要，[modify-babel-
 
 Even though Babel can be used standalone, as you can see in the *Package Authoring Techniques* chapter, you can hook it up with webpack as well. During development, it can make sense to skip processing if you are using language features supported by your browser.
 
-如你将在*Package Authoring Techniques*章节看到的，尽管Babel可以被单独使用，你也可以将其挂在到webpack上。在开发环境中，如果你使用的是你的浏览器可以支持的语言特性，忽略处理也是有意义的。
+如你将在*Package Authoring Techniques*章节看到的，尽管Babel可以被单独使用，你也可以将其挂在到webpack上。在开发环境中，如果你使用的是你的浏览器可以支持的语言特性，也可以不用对代码进行处理。
 
 Skipping processing is a good option especially if you don't rely on any custom language features and work using a modern browser. Processing through Babel becomes almost a necessity when you compile your code for production, though.
 
-如果你不依赖于任何特别的语言特性，并使用现代浏览器进行开发，忽略处理是一个不错的选择。但是为了在生产环境中正常运行，编译代码时通过Babel进行处理就变得很有必要了。
+如果你不依赖于任何特别的语言特性，并使用现代浏览器进行开发，忽略处理也是一个不错的选择。但是为了在生产环境中正常运行，编译代码时通过Babel进行处理就显得很有必要了。
 
 You can use Babel with webpack through [babel-loader](https://www.npmjs.com/package/babel-loader). It can pick up project level Babel configuration or you can configure it at the webpack loader itself. [babel-webpack-plugin](https://www.npmjs.com/package/babel-webpack-plugin) is another lesser known option.
 
-可以在webpack中通过[babel-loader](https://www.npmjs.com/package/babel-loader)来使用Babel。它可以查找系统级别的Babel配置，或者你也可以在webpack的加载器自身中配置它。[babel-webpack-plugin](https://www.npmjs.com/package/babel-webpack-plugin)是另外一个较少为人知晓的选项。
+可以在webpack中通过[babel-loader](https://www.npmjs.com/package/babel-loader)来使用Babel。它可以查找系统级别的Babel配置，或者你也可以在webpack的加载器自身中配置它。[babel-webpack-plugin](https://www.npmjs.com/package/babel-webpack-plugin)是另外一个较少为人知晓的选择。
 
 Connecting Babel with a project allows you to process webpack configuration through it. To achieve this, name your webpack configuration using the *webpack.config.babel.js* convention. [interpret](https://www.npmjs.com/package/interpret) package enables this and it supports other compilers as well.
 
@@ -134,7 +134,7 @@ leanpub-end-insert
 
 Even though you have Babel installed and set up, you are still missing one bit: Babel configuration. This can be achieved using a *.babelrc* dotfile as other tooling can pick it up as well.
 
-尽管你已经安装并设置了Babel，你仍然忽略了一件事：Babel的配置。可以使用*.babelrc*文件来实现，这个文件也支持其它工具。
+尽管你已经安装并设置了Babel，你仍然忽略了一件事：Babel的配置。可以使用 *.babelrc*文件来实现，这个文件也支持其它工具。
 
 W> There are times when caching Babel compilation can surprise you if your dependencies change in a way that *babel-loader* default caching mechanism doesn't notice. Override `cacheIdentifier` with a string that has been derived based on data that should invalidate the cache for better control. [Node crypto API](https://nodejs.org/api/crypto.html) and especially its MD5 related functions can come in handy.
 
@@ -142,11 +142,11 @@ W> 有时候缓存Bable编译会让你感到惊讶，果你的依赖发生了改
 
 W> If you try to import files **outside** of your configuration root directory and then process them through *babel-loader*, this fails. It's [a known issue](https://github.com/babel/babel-loader/issues/313), and there are workarounds including maintaining *.babelrc* at a higher level in the project and resolving against Babel presets through `require.resolve` at webpack configuration.
 
-W> 如果你希望引入在配置文件根目录**之外**的文件，然后通过*babel-loader*对其进行处理，将会失败。这是一个[已知的问题](https://github.com/babel/babel-loader/issues/313)，有几种解决办法，包括在比项目更高一层的目录中来维护*.babelrc*文件，在webpack的配置中通过`require.resolve`对Babel进行预设。
+W> 如果你希望引入在配置文件根目录**之外**的文件，然后通过*babel-loader*对其进行处理，将会失败。这是一个[已知的问题](https://github.com/babel/babel-loader/issues/313)，有几种解决办法，包括在比项目更高一层的目录中来维护 *.babelrc*文件，在webpack的配置中通过`require.resolve`对Babel进行预设。
 
 ### Setting Up *.babelrc*
 
-### 设置*.babelrc*
+### 设置 *.babelrc*
 
 At a minimum, you need [babel-preset-env](https://www.npmjs.com/package/babel-preset-env). It's a Babel preset that enables the needed plugins based on the environment definition you pass to it. It follows the **browserslist** definition discussed in the *Autoprefixing* chapter.
 
@@ -162,7 +162,7 @@ npm install babel-preset-env --save-dev
 
 To make Babel aware of the preset, you need to write a *.babelrc*. Given webpack supports ES6 modules out of the box, you can tell Babel to skip processing them. Skipping this step would break webpack's HMR mechanism although the production build would still work. You can also constrain the build output to work only in recent versions of Chrome.
 
-为了使Babel意识到这个与舍弃，你需要编写一个*.babelrc*。由于webpack支持直接使用ES6模块化，你可以告知Babel忽略处理它们。跳过这一步将打破webpack的HMR机制，尽管生产构建仍然可行。您也可以将构建输出限制为仅在最新版本的Chrome中运行。
+为了使Babel意识到这个预设器，你需要编写一个 *.babelrc*。由于webpack支持直接使用ES6模块化，你可以告知Babel忽略处理它们。跳过这一步将打破webpack的HMR机制，尽管生产构建仍然可行。您也可以将构建输出限制为仅在最新版本的Chrome中运行。
 
 Adjust the target definition as you like. As long as you follow [browserslist](https://www.npmjs.com/package/browserslist), it should work. Here's a sample configuration:
 
