@@ -304,10 +304,24 @@ Although you can replace `HtmlWebpackPlugin` template with your own, there are p
 
 There are also specific plugins that extend `HtmlWebpackPlugin`'s functionality:
 
+下面列举一些继承了`HtmlWebpackPlugin`插件功能的插件
+
 * [favicons-webpack-plugin](https://www.npmjs.com/package/favicons-webpack-plugin) is able to generate favicons.
+
+* [favicons-webpack-plugin](https://www.npmjs.com/package/favicons-webpack-plugin)还可以创建收藏图标。
+
 * [script-ext-html-webpack-plugin](https://www.npmjs.com/package/script-ext-html-webpack-plugin) gives you more control over script tags and allows you to tune script loading further.
+
+* [script-ext-html-webpack-plugin](https://www.npmjs.com/package/script-ext-html-webpack-plugin)给予你对script标签更多的控制，并允许你调节脚本的加载。
+
 * [multipage-webpack-plugin](https://www.npmjs.com/package/multipage-webpack-plugin) builds on top of *html-webpack-plugin* and makes it easier to manage multi-page configurations.
+
+* [multipage-webpack-plugin](https://www.npmjs.com/package/multipage-webpack-plugin)基于*html-webpack-plugin*构建，在处理多页面配置会比较方便。
+
 * [resource-hints-webpack-plugin](https://www.npmjs.com/package/resource-hints-webpack-plugin) adds [resource hints](https://www.w3.org/TR/resource-hints/) to your HTML files to speed up loading time.
+
+* [resource-hints-webpack-plugin](https://www.npmjs.com/package/resource-hints-webpack-plugin)在页面中加入[resource hints](https://www.w3.org/TR/resource-hints/)，加速加载时间。
+
 * [preload-webpack-plugin](https://www.npmjs.com/package/preload-webpack-plugin) enables `rel=preload` capabilities for scripts. This helps with lazy loading and it combines well with techniques discussed in the *Building* part of this book.
 
 ## 结论(Conclusion)
