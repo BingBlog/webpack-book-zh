@@ -294,13 +294,23 @@ Adjust the file as follows:
 
 Run `npm run build` to see the same output as before. This works because npm adds *node_modules/.bin* temporarily to the path. As a result, rather than having to write `"build": "node_modules/.bin/webpack"`, you can do `"build": "webpack"`.
 
+运行`npm run build`，可以看到和之前一样的输出结果。之所以这样，是因为npm把*node_modules/.bin*目录暂时加入了path中。因此，可以使用`"build": "webpack"`代替`"build": "node_modules/.bin/webpack"`的写法。
+
 You can execute this kind of scripts through *npm run* and you can use *npm run* anywhere within your project. If you run the command as is, it gives you the listing of available scripts.
+
+你可以在项目的任何地方使用*npm run*来执行此类脚本。运行上述命令后，控制台将列出可运行的脚本命令。
 
 T> There are shortcuts like *npm start* and *npm test*. You can run these directly without *npm run* although that works too. For those in a hurry, you can use *npm t* to run your tests.
 
+T> 对于*npm start*或者*npm test*有一些缩写。你可以直接运行而没有必要加上*npm run*前缀，甚至，你可以使用*npm t*来运行测试。
+
 ## `HtmlWebpackPlugin` Extensions
 
+## `HtmlWebpackPlugin`深入
+
 Although you can replace `HtmlWebpackPlugin` template with your own, there are premade ones like [html-webpack-template](https://www.npmjs.com/package/html-webpack-template) or [html-webpack-template-pug](https://www.npmjs.com/package/html-webpack-template-pug).
+
+虽然你可以自己编写模板插件替代`HtmlWebpackPlugin`，但是现在已经有一些现成的了。比如：[html-webpack-template](https://www.npmjs.com/package/html-webpack-template)或者[html-webpack-template-pug](https://www.npmjs.com/package/html-webpack-template-pug)。
 
 There are also specific plugins that extend `HtmlWebpackPlugin`'s functionality:
 
@@ -323,6 +333,7 @@ There are also specific plugins that extend `HtmlWebpackPlugin`'s functionality:
 * [resource-hints-webpack-plugin](https://www.npmjs.com/package/resource-hints-webpack-plugin)在页面中加入[resource hints](https://www.w3.org/TR/resource-hints/)，加速加载时间。
 
 * [preload-webpack-plugin](https://www.npmjs.com/package/preload-webpack-plugin) enables `rel=preload` capabilities for scripts. This helps with lazy loading and it combines well with techniques discussed in the *Building* part of this book.
+
 
 ## 结论(Conclusion)
 
