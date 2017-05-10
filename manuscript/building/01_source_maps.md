@@ -28,17 +28,27 @@ It's possible you **don't** want to generate a source map for your production bu
 
 **Hidden source maps** give stack trace information only. You can connect them with a monitoring service to get traces as the application crashes allowing you to fix the problematic situations. While this isn't ideal, it's better to know about possible problems than not.
 
+隐藏的source map仅提供堆栈跟踪信息。您可以将它们与监视服务连接，以便在应用程序崩溃时获取跟踪，从而可以解决有问题的情况。虽然这样不是很理想，但了解可能出现的问题也是不错的。
+
 T> It's a good idea to study the documentation of the loaders you are using to see loader specific tips. For example, with TypeScript, you have to set a particular flag to make it work as you expect.
 
+T> 学习你正在使用的加载器的文档以了解特定于该加载器的提示是一个很好的注意。例如，使用TypeScript时，您必须设置一个特定的标志，使其按照您的期望工作。
+
 ## Enabling Source Maps
+## 启用Source Map
 
 Webpack provides two ways to enable source maps. There's a `devtool` shortcut field. You can also find two plugins that give more options to tweak. The plugins are be discussed briefly at the end of this chapter. Beyond webpack, you also have to enable support for source maps at the browsers you are using for development.
+
+Webpack提供了两种方式来启用source map。提供了一个`devtool`的缩写字段。你也可以找到提供了更多可调整选项的两个插件。这两个插件在本章节的后面简要的进行了讨论。除了webpack，你同样还要启用开发中所用浏览器的source map功能。
 
 {pagebreak}
 
 ### Enabling Source Maps in Webpack
+### 在Webpack启用Source Maps
 
 To get started, you can wrap the core idea within a configuration part. You can convert this to use the plugins later if you want:
+
+首先，你可以将主要的想法都囊括到一个配置中。你可以在之后将其转换为使用插件的方法，如你所希望的那样：
 
 **webpack.parts.js**
 
@@ -50,7 +60,11 @@ exports.generateSourceMaps = ({ type }) => ({
 
 Webpack supports a wide variety of source map types. These vary based on quality and build speed. For now, you can enable `eval-source-map` for development and `source-map` for production. This way you get good quality while trading off performance, especially during development.
 
+Webpack支持很多种类的source map类型。他们种类取决于质量和构建速度。显现，你可以在开发中启用`eval-source-map` ，而在生产中启用`source-map`。如此，你可以获得较高的质量而牺牲较少的性能，特别是在开发环境中。
+
 Set these up as follows:
+
+如下设置：
 
 **webpack.config.js**
 
@@ -77,9 +91,15 @@ leanpub-end-insert
 
 `eval-source-map` builds slowly initially, but it provides fast rebuild speed. More rapid development specific options, such as `cheap-module-source-map` and `eval`, produce lower quality source maps. All `eval` options emit source maps as a part of your JavaScript code.
 
+`eval-source-map`初始化构建时比较慢，但是在重构时速度较快。更快的特定于开发环境的选项，例如`cheap-module-source-map`和`eval`，生产出质量较低的source map。所有的`eval`选项，都将source map作为JavaScript代码的一部分进行输出。
+
 `source-map` is the slowest and highest quality option of them all, but that's fine for a production build.
 
+`source-map`是最慢但是质量最高的选项，所以更适用于生产构建。
+
 If you build the project now (`npm run build`), you should see source maps in the output:
+
+如果你现在构建项目(`npm run build`)，你将会在输出中看到source map：
 
 ```bash
 Hash: 79905cd66e14d3455b7d
@@ -107,9 +127,14 @@ leanpub-end-insert
 
 Take a good look at those *.map* files. That's where the mapping between the generated and the original source happens. During development, it writes the mapping information in the bundle itself.
 
+仔细查看这些 *.map*文件。这就是生成的文件和源文件之间的映射发生的地方。在开发过程中，它将映射信息写入包中。
+
 ### Enabling Source Maps in Browsers
+### 开启浏览器的Source Map
 
 To use source maps within a browser, you have to enable source maps explicitly as per browser-specific instructions:
+
+要在浏览器中使用source map，你需要按照每个浏览器的介绍启用source map：
 
 * [Chrome](https://developer.chrome.com/devtools/docs/javascript-debugging). Sometimes source maps [will not update in Chrome inspector](https://github.com/webpack/webpack/issues/2478). For now, the temporary fix is to force the inspector to reload itself by using *alt-r*.
 * [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map)
@@ -118,18 +143,30 @@ To use source maps within a browser, you have to enable source maps explicitly a
 
 W> If you want to use breakpoints (i.e., a `debugger;` statement or ones set through the browser), the `eval`-based options won't work in Chrome!
 
+W> 如果你希望使用断点(例如一个`debugger;`语法或者通过浏览器来设置)，基于`eval`的选项在Chrome将不会生效。
+
 ## Source Map Types Supported by Webpack
+## Webpack支持的Source Map类型
 
 Source map types supported by webpack can be split into two categories:
 
+webpack所支持的source map类型可以分为两类：
+
 * **Inline** source maps add the mapping data directly to the generated files.
+* **内联** source map将映射数据直接添加到生成的代码文件中。
+
 * **Separate** source maps emit the mapping data to separate source map files and link the original source to them using a comment. Hidden source maps omit the comment on purpose.
 
+* **单独的** source map将映射数据输出到单独的source map文件中，并使用注解将原始文件链接到其自身。隐藏的source map忽略了对目的的注解。
+
 Thanks to their speed, inline source maps are ideal for development. Given they make the bundles big, separate source maps are the preferable solution for production. Separate source maps work during development as well if the performance overhead is acceptable.
+
+由于他们的速度，内联的source map对于开发来说是理想的。由于他们使得代码包变大，单独的source map是生产环境的最佳选择。单独的source map也可以用于开发环境，如果性能上的开销可以接受的话。
 
 {pagebreak}
 
 ## Inline Source Map Types
+## 内联的Source Map类型
 
 Webpack provides multiple inline source map variants. Often `eval` is the starting point and [webpack issue #2145](https://github.com/webpack/webpack/issues/2145#issuecomment-294361203) recommends `cheap-module-source-map` with `output.devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'` as it's a good compromise between speed and quality while working reliably in Chrome and Firefox browsers.
 
