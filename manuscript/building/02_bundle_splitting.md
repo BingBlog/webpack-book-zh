@@ -1,6 +1,9 @@
 # Bundle Splitting
+# 代码包拆分
 
 Currently, the production version of the application is a single JavaScript file. If the application is changed, the client must download vendor dependencies as well.
+
+
 
 It would be better to download only the changed portion. If the vendor dependencies change, then the client should fetch only the vendor dependencies. The same goes for actual application code. **Bundle splitting** can be achieved using `CommonsChunkPlugin`.
 
