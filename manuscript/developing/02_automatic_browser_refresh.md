@@ -30,11 +30,11 @@ npm install webpack-dev-server --save-dev
 
 As before, this command generates a command below the `npm bin` directory and you could run *webpack-dev-server* from there. After running the WDS, you have a development server running at `http://localhost:8080`. Automatic browser refresh is in place now, although at a basic level.
 
-W> If you are using an IDE, consider enabling **save write** from its settings. This way WDS is able to detect changes made to the files correctly.
+{pagebreak}
 
 ## Attaching WDS to the Project
 
-To integrate WDS to the project, you should define an npm script for launching it. To follow npm conventions, you can call it as *start*. To tell the targets apart, you should pass information about the environment to webpack configuration. This allow you to specialize the configuration as needed:
+To integrate WDS to the project, define an npm script for launching it. To follow npm conventions, call it as *start*. To tell the targets apart, pass information about the environment to webpack configuration so you can specialize as needed:
 
 **package.json**
 
@@ -302,7 +302,7 @@ The webpack plugin ecosystem is diverse and there are a lot of plugins that can 
 * [npm-install-webpack-plugin](https://www.npmjs.com/package/npm-install-webpack-plugin) allows webpack to install and wire the installed packages with your *package.json* as you import new packages to your project.
 * [system-bell-webpack-plugin](https://www.npmjs.com/package/system-bell-webpack-plugin) rings the system bell on failure instead of letting webpack fail silently.
 * [friendly-errors-webpack-plugin](https://www.npmjs.com/package/friendly-errors-webpack-plugin) improves on error reporting of webpack. It captures common errors and displays them in a friendlier manner.
-* [nyan-progress-webpack-plugin](https://www.npmjs.com/package/nyan-progress-webpack-plugin) can be used to get tidier output during the build process. Take care if you are using Continuous Integration (CI) systems like Travis, though, as they can clobber the output. Webpack provides `ProgressPlugin` for the same purpose. No nyan there, though.
+* [nyan-progress-webpack-plugin](https://www.npmjs.com/package/nyan-progress-webpack-plugin) can be used to get tidier output during the build process. Take care if you are using Continuous Integration (CI) systems like Travis as they can clobber the output. Webpack provides `ProgressPlugin` for the same purpose. No nyan there, though.
 * [react-dev-utils](https://www.npmjs.com/package/react-dev-utils) contains webpack utilities developed for [Create React App](https://www.npmjs.com/package/create-react-app). Despite its name, they can find use beyond React.
 * [webpack-dashboard](https://www.npmjs.com/package/webpack-dashboard) gives an entire terminal based dashboard over the standard webpack output. If you prefer clear visual output, this one comes in handy.
 
