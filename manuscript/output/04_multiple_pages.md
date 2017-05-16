@@ -192,7 +192,7 @@ leanpub-end-insert
 
 After these changes `/another` should show something familiar:
 
-![Another page shows up](images/another.png)
+![Another page shows up](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/another.png)
 
 {pagebreak}
 

@@ -213,7 +213,7 @@ function renderMarkup(html) {
 
 Run the server now (`node ./server.js`) and go below `http://localhost:8080`, you should see something familiar:
 
-![Hello world](images/hello_01.png)
+![Hello world](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/hello_01.png)
 
 {pagebreak}
 
@@ -277,7 +277,7 @@ If the server crashes, it loses the WebSocket connection. You have to force a re
 
 To prove that SSR works, check out the browser inspector. You should see something familiar there:
 
-![SSR output](images/ssr.png)
+![SSR output](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/ssr.png)
 
 Instead of a `div` where to mount an application, you can see all related HTML there. It's not much in this particular case, but it's enough to showcase the approach.
 
