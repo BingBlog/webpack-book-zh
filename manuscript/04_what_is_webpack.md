@@ -37,7 +37,7 @@ T> 关系依赖图描述的是一个有向图，这个有向图描绘了各个�
 ## Webpack's Execution Process
 ## Webpack执行过程
 
-![Webpack's execution process](images/webpack-process.png)
+![Webpack's execution process](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/webpack-process.png)
 
 Webpack begins its work from **entries**. Often these are JavaScript modules where webpack begins its traversal process. During this process webpack evaluates the matches against **loader** configuration that tells how to transform the files.
 

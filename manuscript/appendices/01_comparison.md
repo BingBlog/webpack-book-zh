@@ -111,7 +111,7 @@ Instead of `rm -rf`, you likely want to use utilities such as [rimraf](https://w
 
 ## Grunt
 
-![Grunt](images/grunt.png)
+![Grunt](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/grunt.png)
 
 [Grunt](http://gruntjs.com/) was the first popular task runner for frontend developers. Its plugin architecture contributed towards its popularity. Plugins are often complex by themselves. As a result, when configuration grows, it can become difficult to understand what's going on.
 
@@ -153,7 +153,7 @@ T> [grunt-webpack](https://www.npmjs.com/package/grunt-webpack) plugin allows yo
 
 ## Gulp
 
-![Gulp](images/gulp.png)
+![Gulp](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/gulp.png)
 
 [Gulp](http://gulpjs.com/) takes a different approach. Instead of relying on configuration per plugin, you deal with actual code. Gulp builds on top of the concept of piping. If you are familiar with Unix, it's the same idea here. You have the following concepts:
 
@@ -227,7 +227,7 @@ T> [Fly](https://www.npmjs.com/package/fly) is a similar tool as Gulp. It relies
 
 ## Browserify
 
-![Browserify](images/browserify.png)
+![Browserify](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/browserify.png)
 
 Dealing with JavaScript modules has always been a bit of a problem. The language itself didn't have the concept of modules till ES6. Ergo, the language was stuck in the '90s when it comes to browser environments. Various solutions, including [AMD](http://requirejs.org/docs/whyamd.html), have been proposed.
 
@@ -239,13 +239,13 @@ T> [Splittable](https://www.npmjs.com/package/splittable) is a Browserify wrappe
 
 ## JSPM
 
-![JSPM](images/jspm.png)
+![JSPM](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/jspm.png)
 
 Using [JSPM](http://jspm.io/) is quite different than previous tools. It comes with a command line tool of its own that is used to install new packages to the project, create a production bundle, and so on. It supports [SystemJS plugins](https://github.com/systemjs/systemjs#plugins) that allow you to load various formats to your project.
 
 ## Brunch
 
-![Brunch](images/brunch.png)
+![Brunch](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/brunch.png)
 
 Compared to Gulp, [Brunch](http://brunch.io/) operates on a higher level of abstraction. It uses a declarative approach similar to webpack's. To give you an example, consider the following configuration adapted from the Brunch site:
 
@@ -279,7 +279,7 @@ T> There is an experimental [Hot Module Reloading runtime](https://www.npmjs.com
 
 ## Webpack
 
-![webpack](images/webpack.png)
+![webpack](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/webpack.png)
 
 You could say [webpack](https://webpack.js.org/) takes a more monolithic approach than Browserify. Whereas Browserify consists of multiple small tools, webpack comes with a core that provides a lot of functionality out of the box.
 

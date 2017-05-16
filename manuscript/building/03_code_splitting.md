@@ -14,7 +14,7 @@ Code splitting can be done in two primary ways in webpack: through a dynamic `im
 
 The goal is to end up with a split point that gets loaded on demand. There can be splits inside splits, and you can structure an entire application based on splits. The advantage of doing this is that then the initial payload of your application can be smaller than it would be otherwise.
 
-![Code splitting](images/dynamic.png)
+![Code splitting](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/dynamic.png)
 
 ### Dynamic `import`
 
@@ -206,7 +206,7 @@ leanpub-end-insert
 
 If you open up the application (`npm start`) and click the button, you should see the new text in the button.
 
-![Lazy loaded content](images/lazy.png)
+![Lazy loaded content](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/lazy.png)
 
 {pagebreak}
 
@@ -272,7 +272,7 @@ body {
 
 The idea is that after *lazy.js* gets loaded, *lazy.css* is applied as well. You can confirm this by running the application (`npm start`). The same behavior is visible if you build the application (`npm run build`) and examine the output (`0.js`). This is due to the `ExtractTextPlugin` definition.
 
-![Lazy styled content](images/lazy-styled.png)
+![Lazy styled content](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/lazy-styled.png)
 
 {pagebreak}
 

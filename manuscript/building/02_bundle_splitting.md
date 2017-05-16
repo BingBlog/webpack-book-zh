@@ -122,7 +122,7 @@ vendor.js.map     164 kB       1  [emitted]         vendor
 
 If you examine the resulting bundle, you can see that it contains React given that's how the default definition works. Webpack pulls the related dependencies to a bundle by default as illustrated by the image below:
 
-![Separate app and vendor bundles](images/bundle_01.png)
+![Separate app and vendor bundles](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/bundle_01.png)
 
 `CommonsChunkPlugin` is a webpack plugin that allows to alter this default behavior.
 
@@ -200,7 +200,7 @@ vendor.js.map     167 kB       1  [emitted]         vendor
 
 Now the bundles look the way they should. The image below illustrates the current situation.
 
-![App and vendor bundles after applying `CommonsChunkPlugin`](images/bundle_02.png)
+![App and vendor bundles after applying `CommonsChunkPlugin`](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/bundle_02.png)
 
 If the vendor entry contained extra dependencies (white on the image), the setup would pull those into the project as well. Resolving this problem is possible by examining which packages are being used in the project using the `minChunks` parameter of the `CommonsChunksPlugin`. But before that, let's abstract the solution a bit.
 
@@ -389,7 +389,7 @@ T> The `chunks` option refers to the entry chunks of your configuration.
 
 The image below shows the difference compared to the default. The top circles represent the parent bundles. The way `B` is treated depends on the chosen option:
 
-![`CommonsChunkPlugin` children and async](images/commonschunk.png)
+![`CommonsChunkPlugin` children and async](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/commonschunk.png)
 
 T> `children` and `async` can be used together if you are using *Code Splitting* and want to extract commonalities.
 

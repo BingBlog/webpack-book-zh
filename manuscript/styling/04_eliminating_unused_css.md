@@ -70,7 +70,7 @@ If you run the application (`npm start`), the "Hello world" should look like a b
 
 如果现在执行`npm start`，"Hello world"看起来应该是一个按钮。
 
-![Styled hello](images/styled-button.png)
+![Styled hello](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/styled-button.png)
 
 {pagebreak}
 

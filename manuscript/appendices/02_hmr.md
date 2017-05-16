@@ -39,7 +39,7 @@ The following listing contains the most important parts related to this approach
 
 If you implement configuration like above without implementing the client interface, you will most likely end up with an error:
 
-![No refresh](images/no-refresh.png)
+![No refresh](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/no-refresh.png)
 
 The numbers are cryptic but the problem can be fixed with the `NamedModulesPlugin`.
 
@@ -67,7 +67,7 @@ You can enable this better behavior as follows:
 
 If you restart the development server (terminate it and run `npm start`), you should see something more familiar:
 
-![No refresh, but better output](images/no-refresh2.png)
+![No refresh, but better output](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/no-refresh2.png)
 
 The message tells that even though the HMR interface notified the client portion of the code of a hot update, nothing was done about it. This is something to fix next.
 
@@ -112,7 +112,7 @@ If you refresh the browser, try to modify *app/component.js* after this change, 
 
 The image below shows possible output:
 
-![Patched a module successfully through HMR](images/hmr.png)
+![Patched a module successfully through HMR](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/hmr.png)
 
 The idea is the same with styling, React, Redux, and other technologies. Sometimes you don't have to implement the interface yourself even as available tooling takes care of that for you.
 

@@ -32,7 +32,7 @@ Linting does **not** replace proper testing, but it can complement testing appro
 
 ## Setting Up ESLint
 
-![ESLint](images/eslint.png)
+![ESLint](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/eslint.png)
 
 [ESLint](http://eslint.org/) is the most versatile linting solution for JavaScript. It builds on top of ideas presented by JSLint and JSHint. More importantly, it allows you to develop custom rules.
 
@@ -193,7 +193,7 @@ leanpub-end-insert
 
 Run the server now (`npm start`) and break the code to see an overlay in the browser:
 
-![Error overlay](images/error-overlay.png)
+![Error overlay](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/error-overlay.png)
 
 {pagebreak}
 

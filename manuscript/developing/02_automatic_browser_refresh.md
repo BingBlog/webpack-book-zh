@@ -74,7 +74,7 @@ webpack: bundle is now VALID.
 
 The server is running and if you open `http://localhost:8080/` at your browser, you should see something familiar:
 
-![Hello world](images/hello_01.png)
+![Hello world](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/hello_01.png)
 
 If you try modifying the code, you should see output in your terminal. The browser should also perform a hard refresh on change.
 
@@ -201,7 +201,7 @@ After this change, you can configure the server host and port options through en
 
 If you access through `http://localhost:8080/webpack-dev-server/`, WDS provides status information at the top. If your application relies on WebSockets and you use WDS proxying, you need to use this particular url as otherwise WDS logic interferes.
 
-![Status information](images/status-information.png)
+![Status information](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/status-information.png)
 
 T> [dotenv](https://www.npmjs.com/package/dotenv) allows you to define environment variables through a *.env* file. *dotenv* allows you to control the host and port setting of the setup quickly.
 

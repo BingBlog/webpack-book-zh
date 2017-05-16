@@ -1,6 +1,6 @@
 # Source Maps
 
-![Source maps in Chrome](images/sourcemaps.png)
+![Source maps in Chrome](https://raw.githubusercontent.com/survivejs-translations/webpack-book-zh/master/manuscript/images/sourcemaps.png)
 
 When your source code has gone through any transformations, debugging becomes a problem. When debugging in a browser, how to tell where the original code is? **Source maps** solve this problem by providing a mapping between the original and the transformed source code. In addition to source compiling to JavaScript, this works for styling as well.
 
