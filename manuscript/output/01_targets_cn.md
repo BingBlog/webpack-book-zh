@@ -1,11 +1,4 @@
-# Webpack-SurviveJS
-
-@(Webpack-book)
-
------------------------
-[TOC]
-
-## 构建目标（Build Targets）
+# 构建目标（Build Targets）
 
 Even though webpack is used most commonly for bundling web applications, it can do more. You can use it to target Node or desktop environments, such as Electron. Webpack can also bundle as a library while writing an appropriate output wrapper making it possible to consume the library.
 
@@ -15,13 +8,13 @@ Webpack's output target is controlled by the `target` field. You'll learn about 
 
 Webpack的输出目标通过`target`字段控制。你将会在下一部分了解到主要目标并在之后对库的具体选项进行深挖。
 
-### Web目标（Web Targets）
+## Web目标（Web Targets）
 
 Webpack uses the *web* target by default. This is ideal for a web application like the one you have developed in this book. Webpack bootstraps the application and load its modules. The initial list of modules to load is maintained in a manifest, and then the modules can load each other as defined.
 
 Webpack默认使用*web*目标。这对于如之前你在本书中所开发的web应用来说是很理想的。Webpack启动应用并加载自身模块。初始化加载列表通过一个清单来维护，而后模块能够如定义那样互相加载。
 
-#### Web Workers
+### Web Workers
 
 The *webworker* target wraps your application as a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). Using web workers is valuable if you want to execute computation outside of the main thread of the application without slowing down the user interface. There are a couple of limitations you should be aware of:
 
@@ -37,7 +30,7 @@ T> Web workers and their usage are discussed in detail in the *Web Workers* chap
 
 T> Web workers及其用法已在*Web Workers*章节详细讨论。
 
-### Node宿主 （Node Targets）
+## Node宿主（Node Targets）
 
 Webpack provides two Node-specific targets: `node` and `async-node`. It uses standard Node `require` to load chunks unless async mode is used. In that case, it wraps modules so that they are loaded asynchronously through Node `fs` and `vm` modules.
 
@@ -47,7 +40,7 @@ The main use case for using the Node target is *Server Side Rendering* (SSR). Th
 
 使用Node宿主的主要用例是*服务端渲染*（SSR）。这一概念将在*服务端渲染*章节进行讨论。
 
-### 桌面宿主（Desktop Targets）
+## 桌面宿主（Desktop Targets）
 
 There are desktop shells, such as [NW.js](https://nwjs.io/) (previously *node-webkit*) and [Electron](http://electron.atom.io/) (previously *Atom*). Webpack can target these as follows:
 
@@ -66,7 +59,7 @@ There are desktop shells, such as [NW.js](https://nwjs.io/) (previously *node-we
 若想基于开发环境为Electron和React设置webpack的热加载，那么[electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate) 是一个好的出发点。[electron-compile](https://github.com/electron/electron-compile)完全忽略了webpack，且是一个为Electron编译JavaScript和CSS更轻量的选择。
 {pagebreak}
 
-### 结论（Conclusion）
+## 结论（Conclusion）
 
 Webpack supports targets beyond the web. Based on this you can say name webpack is an understatement considering its capabilities.
 
