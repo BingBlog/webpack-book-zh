@@ -1,4 +1,4 @@
-## 服务端渲染（Server Side Rendering）
+# 服务端渲染（Server Side Rendering）
 
 **Server Side Rendering** (SSR) is a technique that allows you to serve an initial payload with HTML, JavaScript, CSS, and even application state. You serve a fully rendered HTML page that would make sense even without JavaScript enabled. In addition to providing potential performance benefits, this can help with Search Engine Optimization (SEO).
 
@@ -12,7 +12,7 @@ To demonstrate SSR, you can use webpack to compile a client-side build that then
 
 为演示SSR，你可以使用webpack来编译客户端构建以让服务器根据React规则来进行渲染。这已足够理解服务端渲染是如何工作和问题所在。
 
-### 配置Babel和React（Setting Up Babel with React）
+## 配置Babel和React（Setting Up Babel with React）
 
 The *Loading JavaScript* chapter covers the essentials of using Babel with webpack. There's setup that is particular to React you should perform, though. Given most of React projects rely on [JSX](https://facebook.github.io/jsx/) format, you have to enable it through Babel.
 
@@ -46,7 +46,7 @@ leanpub-end-insert
 }
 ```
 
-### 配置React和ESLint（Configuring React with ESLint）
+## 配置React和ESLint（Configuring React with ESLint）
 
 Using React with ESLint and JSX requires extra work as well. [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react) does a part of the work, but also ESLint configuration is needed.
 
@@ -98,7 +98,7 @@ leanpub-end-insert
 
 `plugin:react/recommended` 提供了一个好的开始。记得在`parserOptions`支持JSX十分重要，否则其将无法解析JSX语法。
 
-### 配置React Demo （Setting Up a React Demo）
+## 配置React Demo （Setting Up a React Demo）
 
 To make sure the project has the dependencies in place, install React and [react-dom](https://www.npmjs.com/package/react-dom). The latter package is needed to render the application to the DOM.
 
@@ -144,7 +144,7 @@ W> 考虑到ES 6风格的引入机制（imports）和CommonJS的导出机制（e
 
 {pagebreak}
 
-### 配置Webpack（Configuring Webpack）
+## 配置Webpack（Configuring Webpack）
 
 To keep things nice and tidy, it's possible to push the demo configuration to a file of its own. A lot of the work has been done already. Given you have to consume the same output from multiple environments, using UMD as the library target makes sense:
 
@@ -199,7 +199,7 @@ If you build the SSR demo (`npm run build:ssr`), you should see a new file at *.
 
 如果构建SSR的demo（`npm run build:ssr`），你应该看到一个新文件在**./static/index.js**。下一步则是配置服务器进行渲染。
 
-### 配置服务器（Setting Up a Server）
+## 配置服务器（Setting Up a Server）
 
 To keep things clear to understand, you can set up a standalone Express server that picks up the generated bundle and renders it following the SSR principle. Install Express first:
 
@@ -273,7 +273,7 @@ W> If you get a linting warning like `warning  'React' is defined but never used
 
 W> 如果你得到了一个格式（linting）警告如`warning  'React' is defined but never used  no-unused-vars`，请确保ESLint React插件已被支持且其默认的预先设置已在使用。
 
-### 监听服务端渲染改变并刷新浏览器（Watching SSR Changes and Refreshing the Browser）
+## 监听服务端渲染改变并刷新浏览器（Watching SSR Changes and Refreshing the Browser）
 
 The first portion of the problem is fast to solve. Run `npm run build:ssr -- --watch` in a terminal. That forces webpack to run in a watch mode. It would be possible to wrap this idea within an npm script for convenience, but this is enough for this demo.
 
@@ -351,7 +351,7 @@ T> The implementation could be refined further by implementing a production mode
 
 T> 通过为服务器忽略实现最少插入浏览器刷新脚本的生产模式来进一步改进实现。服务器可以为生成好的HTML插入初始化数据。这么处理可以避免客户端请求。
 
-### 公开问题（Open Questions）
+## 公开问题（Open Questions）
 
 Even though the demo illustrates the basic idea of SSR, it still leaves open questions:
 
@@ -373,7 +373,7 @@ T> Routing is a big problem of its own solved by frameworks like Next.js. Patric
 
 T> 路由是被如Next.js之类框架解决的其中一个大问题。Patrick Hund[讨论如何通过React和React Router 4解决路由问题](https://ebaytech.berlin/universal-web-apps-with-react-router-4-15002bb30ccb).
 
-### 结论（Conclusion）
+## 结论（Conclusion）
 
 SSR comes with a technical challenge and for this reason specific solutions have appeared around it. Webpack is a good fit for SSR setups.
 
