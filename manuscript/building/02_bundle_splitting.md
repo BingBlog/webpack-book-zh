@@ -3,31 +3,49 @@
 
 Currently, the production version of the application is a single JavaScript file. If the application is changed, the client must download vendor dependencies as well.
 
-
+对于当前的构建来说，应用在生产环境下只有一个JavaScript文件。如果应用改变了，客户端还需要下来所有的公共依赖。
 
 It would be better to download only the changed portion. If the vendor dependencies change, then the client should fetch only the vendor dependencies. The same goes for actual application code. **Bundle splitting** can be achieved using `CommonsChunkPlugin`.
 
+如果能够仅下载发生改变了的那部分就好了。如果公共的依赖发生了更改，那么应用也应该仅拉去公共依赖部分。对于实际的应用代码也是一样的道理。**代码包拆分**可以通过`CommonsChunkPlugin`来实现。
+
 T> To invalidate the bundles properly, you have to attach hashes to the generated bundles as discussed in the *Adding Hashes to Filenames* chapter.
 
+T> 为了验证代码包都是正确的，你需要将生成的代码包中添加哈希值，如在*Adding Hashes to Filenames*章节所讨论的那样。
+
 ## The Idea of Bundle Splitting
+## 代码包拆分的思想
 
 With bundle splitting, you can push the vendor dependencies to a bundle of their own and benefit from client level caching. This can be done in such a way that the whole size of the application remains the same. Given there are more requests to perform, there's a slight overhead. But the benefit of caching makes up for this cost.
 
+通过代码包拆分，你可以将公共依赖部分推入到一个它们自己的代码中，从而使得客户端可以更好的缓存。可以通过不增加整体应用的大小来实现这个想法。由于将产生更多的请求，会造成轻微的消耗。但是从缓存中获得的好处远大于由此产生的损失。
+
 To give you a quick example, instead of having *app.js* (100 kB), you could end up with *app.js* (10 kB) and *vendor.js* (90 kB). Now changes made to the application are cheap for the clients that have already used the application earlier.
 
+更直观的例子就是，相比于得到一个单独的*app.js*（100kB）文件，你得到的是一个*app.js* (10 kB)，和*vendor.js* (90 kB)。现在，对应用的代码进行了更改，对于已经使用过这个应用的客户端，将只请求*app.js* (10 kB)。
+
 Caching comes with its problems. One of those is cache invalidation. A potential approach related to that is discussed in the *Adding Hashes to Filenames* chapter.
+ 
+缓存也会带来问题。其中之一就是缓存无效。一个可能的与此相关的解决方案在*Adding Hashes to Filenames*章节有所讨论。
 
 Bundle splitting isn't the only way out. The *Code Splitting* chapter discusses another, more granular way.
 
+代码包拆分不是唯一的方法。在*Code Splitting*章节讨论了另外一种方式，更加的粒度化。
+
 ## Adding Something to Split
+## 添加一些能拆分的代码
 
 Given there's not much to split into the vendor bundle yet, you should add something there. Add React to the project first:
+
+由于目前并没有足够的代码可以拆分到公共的代码包中，你应该增加一些代码。首先在项目中加入React：
 
 ```bash
 npm install react --save
 ```
 
 Then make the project depend on it:
+
+然后，在项目中引入它：
 
 **app/index.js**
 
@@ -39,6 +57,8 @@ leanpub-end-insert
 ```
 
 Execute `npm run build` to get a baseline build. You should end up with something as below:
+
+执行`npm run build`来获得一个基本的构建包。你应该能看到如下的输出：
 
 ```bash
 Hash: 2db5a05e02ac73897fd4
@@ -66,11 +86,18 @@ leanpub-end-insert
 
 As you can see, *app.js* is big. That is something to fix next.
 
+如你所见，*app.js*很大。我们接下来要解决这个问题。
+
 ## Setting Up a `vendor` Bundle
+## 设置`vendor`代码包
 
 So far, the project has only a single entry named as `app`. The configuration tells webpack to traverse dependencies starting from the `app` entry directory and then to output the resulting bundle below the `build` directory using the entry name and `.js` extension.
 
+到目前为止，项目只有一个叫做`app`的单独入口。配置告知webpack从这个`app`入口文件遍历依赖，然后将最终的代码包输出到`build`文件夹，并使用入口文件的名称和`.js`扩展。
+
 To improve the situation, you can define a `vendor` entry containing React by matching the dependency name. It's possible to generate this information automatically as discussed at the end of this chapter, but a static array is enough to illustrate the basic idea. Change the code:
+
+为了改进这个处境，你可以通过匹配依赖名称，来定义一个包含React的`vendor`入口。如在本章节末尾所讨论的那样，自动生成这些信息也是可行的，但是一个静态的数组就足以描绘该基本思想。如下更改代码：
 
 **webpack.config.js**
 
@@ -90,6 +117,8 @@ leanpub-end-insert
 {pagebreak}
 
 You have two separate entries, or **entry chunks**, now. `[name].js` of the existing `output.path` the configuration kicks in based on the entry name. If you try to generate a build now (`npm run build`), you should see something along this:
+
+你现在有两个单独的入口，后者叫做**入口代码块**。配置中已经声明的`output.path`对应的`[name].js`值是基于入口名称的。
 
 ```bash
 Hash: ebf1b976090ff95e4fcd
@@ -121,23 +150,36 @@ vendor.js.map     164 kB       1  [emitted]         vendor
 
 *app.js* and *vendor.js* have separate chunk IDs right now given they are entry chunks of their own. The output size is off, though. Intuitively *app.js* should be smaller to attain the goal with this build.
 
+由于*app.js*和*vendor.js*现在是其自身的入口对应的代码块，它们现在拥有不同的代码块ID。然后，输出的大小是不能接受的。直觉告诉我们，使用该构建，*app.js*文件应该更小才能实现目标。
+
 {pagebreak}
 
 If you examine the resulting bundle, you can see that it contains React given that's how the default definition works. Webpack pulls the related dependencies to a bundle by default as illustrated by the image below:
+
+如果你检查最终的代码块，你可以看到它包含了React，那是因为默认的定义生效了。Webpack如下图描述的那样，默认拉取了相关的依赖到这个代码包中：
 
 ![Separate app and vendor bundles](images/bundle_01.png)
 
 `CommonsChunkPlugin` is a webpack plugin that allows to alter this default behavior.
 
+`CommonsChunkPlugin`是一个webpack的插件，可以修改这个默认的行为。
+
 W> This step can fail on Windows due to letter casing. Instead of `c:\` you have to force your terminal to read `C:\`. There's more information in the [related webpack issue](https://github.com/webpack/webpack/issues/2362).
 
+W> 由于字母大小写问题，该步骤在Windows将会失败。你必须强制让你的终端读取`C:\`而不是`c:\`。更多信息可参考[webpack相关问题](https://github.com/webpack/webpack/issues/2362)。
+
 W> Webpack doesn't allow referring to entry files within entries. If you inadvertently do this, webpack complains loudly. Consider refactoring the module structure of your code to eliminate the situation.
+
+W> Webpack不允许引用入口中定义的入口文件。如果你不经意间这么干了，webpack将会大声抱怨。考虑对代码模块的结构进行重构来消除这个问题。
 
 {pagebreak}
 
 ## Setting Up `CommonsChunkPlugin`
+## 设置`CommonsChunkPlugin`
 
 [CommonsChunkPlugin](https://webpack.js.org/guides/code-splitting-libraries/#commonschunkplugin) is a powerful and complex plugin. In this case, the target is clear. You have to tell it to extract vendor related code to a bundle of its own. Before abstraction, implement it:
+
+[CommonsChunkPlugin](https://webpack.js.org/guides/code-splitting-libraries/#commonschunkplugin)是一个很强大并且很复杂的插件。在当前情况下，目标非常明确。你需要告诉它提取与vendor相关的代码到一个单独的代码包中。在将抽象化的概念之前，先实现它：
 
 **webpack.config.js**
 
@@ -167,9 +209,13 @@ leanpub-end-insert
 
 The configuration tells the plugin to extract React to a bundle named `vendor`.
 
+该配置告诉这个插件，提取React到名为`vendor`的代码包中。
+
 {pagebreak}
 
 If you execute the build now using `npm run build`, you should see something along this:
+
+如果你现在执行`npm run build`来构建，你将看到如下内容：
 
 ```bash
 Hash: af634c8857c0ffb5c5e0
@@ -203,9 +249,13 @@ vendor.js.map     167 kB       1  [emitted]         vendor
 
 Now the bundles look the way they should. The image below illustrates the current situation.
 
+现在代码包看起来正如它们被期望的那样。如下的图片描述了当前的情形。
+
 ![App and vendor bundles after applying `CommonsChunkPlugin`](images/bundle_02.png)
 
 If the vendor entry contained extra dependencies (white on the image), the setup would pull those into the project as well. Resolving this problem is possible by examining which packages are being used in the project using the `minChunks` parameter of the `CommonsChunksPlugin`. But before that, let's abstract the solution a bit.
+
+
 
 T> The technique could be implemented only for `productionConfig`. It's sensible to maintain it at `commonConfig` as it improved performance.
 
