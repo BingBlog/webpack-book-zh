@@ -1,8 +1,8 @@
-# 分析静态资源构建（Analyzing Build Statistics）
+# 分析构建数据（Analyzing Build Statistics）
 
 Analyzing build statistics is a good step towards understanding webpack better. Visualizing them helps you to understand the composition of your bundles.
 
-分析静态资源构建对于更好理解webpack来说是很好的方法。将他们可视化能够帮助你了解你代码包的构成。
+分析构建数据对于更好理解webpack来说是很好的方法。将他们可视化能够帮助你了解你代码包的构成。
 
 ## 配置Webpack（Configuring Webpack）
 
@@ -14,7 +14,7 @@ To get suitable output, you need to do a couple of tweaks to the configuration. 
 * `--json` to make webpack output statistics.
 
 * `--profile`用于捕获时间相关的信息。可选项，但最好还是设置。
-* `--json`设置webpack输出静态资源。
+* `--json`设置webpack输出数据。
 
 Here's the line of code you need to pipe the output to a file:
 
