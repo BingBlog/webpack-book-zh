@@ -52,16 +52,20 @@ npm install webpack-dev-server --save-dev
 
 As before, this command generates a command below the `npm bin` directory and you could run *webpack-dev-server* from there. After running the WDS, you have a development server running at `http://localhost:8080`. Automatic browser refresh is in place now, although at a basic level.
 
+<<<<<<< HEAD
 和之前一样，该命令在`npm bin`目录下生成了一个命令，你可以从那里运行*webpack-dev-server*。在启动WDS后，你就有了一个开发服务器，运行在`http://localhost:8080`上。尽管只是一个基础版本，自动刷新现在已经OK了。
 
 W> If you are using an IDE, consider enabling **save write** from its settings. This way WDS is able to detect changes made to the files correctly.
+=======
+{pagebreak}
+>>>>>>> d199bf6f6ac7a9196a6595dc074425c87047c3e0
 
 W> 如果你使用的是集成开发环境，考虑在设置中启用**save write(自动保存)**。如此，WDS就可以正确的监听文件的更改。
 
 ## Attaching WDS to the Project
 ## 在项目中使用WDS
 
-To integrate WDS to the project, you should define an npm script for launching it. To follow npm conventions, you can call it as *start*. To tell the targets apart, you should pass information about the environment to webpack configuration. This allow you to specialize the configuration as needed:
+To integrate WDS to the project, define an npm script for launching it. To follow npm conventions, call it as *start*. To tell the targets apart, pass information about the environment to webpack configuration so you can specialize as needed:
 
 为了将WDS集成到项目中，你应该定义一个npm脚本来启动它。为了遵循npm的约定，你可以称之为*start*。为了区别不够的构建目标，你应该想webpack配置传入环境的信息。这可以让你根据需要进行专门的配置：
 
@@ -416,10 +420,14 @@ webpack插件生态系统是多样的，有很多插件可以帮助开发人员�
 * [system-bell-webpack-plugin](https://www.npmjs.com/package/system-bell-webpack-plugin)让webpack在失败时发出响铃，而不是保持沉默。
 
 * [friendly-errors-webpack-plugin](https://www.npmjs.com/package/friendly-errors-webpack-plugin) improves on error reporting of webpack. It captures common errors and displays them in a friendlier manner.
+<<<<<<< HEAD
 * [friendly-errors-webpack-plugin](https://www.npmjs.com/package/friendly-errors-webpack-plugin)改进了webpack的错误报告。它捕获普通的错误，并以有好的方式展示出来。
 
 * [nyan-progress-webpack-plugin](https://www.npmjs.com/package/nyan-progress-webpack-plugin) can be used to get tidier output during the build process. Take care if you are using Continuous Integration (CI) systems like Travis, though, as they can clobber the output. Webpack provides `ProgressPlugin` for the same purpose. No nyan there, though.
 
+=======
+* [nyan-progress-webpack-plugin](https://www.npmjs.com/package/nyan-progress-webpack-plugin) can be used to get tidier output during the build process. Take care if you are using Continuous Integration (CI) systems like Travis as they can clobber the output. Webpack provides `ProgressPlugin` for the same purpose. No nyan there, though.
+>>>>>>> d199bf6f6ac7a9196a6595dc074425c87047c3e0
 * [react-dev-utils](https://www.npmjs.com/package/react-dev-utils) contains webpack utilities developed for [Create React App](https://www.npmjs.com/package/create-react-app). Despite its name, they can find use beyond React.
 * [react-dev-utils](https://www.npmjs.com/package/react-dev-utils)包含有助于[Create React App](https://www.npmjs.com/package/create-react-app)开发的webpack实用程序。尽管它的名字中有React，它们在React之外也大有用处。
 

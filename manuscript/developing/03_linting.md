@@ -39,10 +39,14 @@ T> 该消息告知了一个与其竞争的项目，JSCS， [决定将其合并�
 
 T> [eslint-config-cleanjs](https://www.npmjs.com/package/eslint-config-cleanjs) is a good example of how you can use ESLint to restrict JavaScript to a purely functional subset.
 
+<<<<<<< HEAD
 T> [eslint-config-cleanjs](https://www.npmjs.com/package/eslint-config-cleanjs)是一个很好的例子，阐释了如何使用ESLint来限制JavaScript为纯函数式的风格。
 
 ## Linting Is about More than Catching Issues
 ## 检查的意义远不仅在于发现问题
+=======
+## Linting Is About More than Catching Issues
+>>>>>>> d199bf6f6ac7a9196a6595dc074425c87047c3e0
 
 Besides linting for issues, it can be valuable to manage the code style. Nothing is more annoying than having to work with source code that has mixed tabs and spaces. Stylistically consistent code reads better. When integrated with an Editor or IDE linting also points out your mistakes as you make them, making it easier to adjust your technique and avoid making more of the same errors.
 
@@ -232,7 +236,7 @@ const developmentConfig = () => {
     devServer: {
       ...
 leanpub-start-insert
-      // overlay: true captures only errors
+      // overlay: true is equivalent
       overlay: {
         errors: true,
         warnings: true,
@@ -338,7 +342,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 # Format specific overrides
-[app/**/*.js]
+[*.js]
 indent_style = space
 indent_size = 2
 ```

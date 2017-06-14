@@ -222,7 +222,7 @@ T> 如果你需要同时支持webpack1和webpack2，你可以基于版本来创�
 ## Configuration Layouts
 ## 配置的布局
 
-In the book project, you push all of the configuration into two files: *webpack.config.js* and *webpack.parts*. The former contains higher level configuration while the latter lower level and isolates you from webpack specifics. The chosen approach allows more layouts, and you can evolve it further.
+In the book project, you push all of the configuration into two files: *webpack.config.js* and *webpack.parts.js*. The former contains higher level configuration while the latter lower level and isolates you from webpack specifics. The chosen approach allows more layouts, and you can evolve it further.
 
 在本书的项目中，你将所有的配置都放入到了两个文件中：*webpack.config.js*和*webpack.parts*。前置包含了更高层面的配置，而后者是更低层面的并将你与webpack的细节隔离。所选的方式允许更多的布局，而你可以进一步对其扩展。
 
