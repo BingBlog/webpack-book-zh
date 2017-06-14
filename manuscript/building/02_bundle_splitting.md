@@ -102,7 +102,7 @@ To improve the situation, you can define a `vendor` entry containing React by ma
 **webpack.config.js**
 
 ```javascript
-const commonConfig = merge([
+const productionConfig = merge([
 leanpub-start-insert
   {
     entry: {
@@ -190,7 +190,7 @@ leanpub-end-insert
 
 ...
 
-const commonConfig = merge([
+const productionConfig = merge([
   {
     entry: {
       vendor: ['react'],
@@ -302,7 +302,7 @@ leanpub-end-delete
 
 ...
 
-const commonConfig = merge([
+const productionConfig = merge([
   {
     entry: {
       vendor: ['react'],
@@ -377,7 +377,7 @@ To capture only JavaScript files from *node_modules*, you should perform a check
 **webpack.config.js**
 
 ```javascript
-const commonConfig = merge([
+const productionConfig = merge([
 leanpub-start-delete
   {
     entry: {
@@ -434,9 +434,7 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
       chunks: ['login', 'app'],
-      minChunks: (module, count) => {
-        return count >= 2 && isVendor(module);
-      }
+      minChunks: (module, count) => count >= 2 && isVendor(module),
     }),
   ],
   ...

@@ -27,7 +27,7 @@ exports.autoprefix = () => ({
   loader: 'postcss-loader',
   options: {
     plugins: () => ([
-      require('autoprefixer'),
+      require('autoprefixer')(),
     ]),
   },
 });
@@ -43,7 +43,6 @@ To connect the loader with `ExtractTextPlugin`, hook it up as follows:
 
 ```javascript
 const productionConfig = merge([
-  ...
 leanpub-start-delete
   parts.extractCSS({ use: 'css-loader' }),
 leanpub-end-delete
@@ -83,12 +82,9 @@ body {
 }
 ```
 
-As you can see, autoprefixing expands the rules, so you don't have to remember to do that.
+As you can see, autoprefixing expands the rules. If you know what browsers you support, it's possible to set up a [browserslist](https://www.npmjs.com/package/browserslist) file. Different tools pick up this definition, *autoprefixer* included.
 
 正如你所看到的，自动前缀扩展了规则，所以你不必记住要编写哪些前缀。
-
-If you know what browsers you support, it's possible to set up a [browserslist](https://www.npmjs.com/package/browserslist) file. Different tools pick up this definition, *autoprefixer* included.
-
 如果您明确知道需要支持哪些浏览器，则可以设置一个[browserslist](https://www.npmjs.com/package/browserslist)文件。不同的工具都可以识别这个定义，包括*autoprefixer*。
 
 {pagebreak}

@@ -178,7 +178,7 @@ T> [extract-loader](https://www.npmjs.com/package/extract-loader)是`ExtractText
 ## Managing Styles Outside of JavaScript
 ## 在JavaScript之外管理样式
 
-Even though referring to styling through JavaScript and then bundling is a valid option, it's possible to achieve the same result through an `entry` and [globbing](https://www.npmjs.com/package/glob):
+Even though referring to styling through JavaScript and then bundling is the recommended option, it's possible to achieve the same result through an `entry` and [globbing](https://www.npmjs.com/package/glob):
 
 尽管通过JavaScript引用样式，然后进行构建，是一个很好的选择，但是也可以通过`entry`和[globbing](https://www.npmjs.com/package/glob)实现相同的结果。 基本思想是这样的：
 

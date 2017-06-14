@@ -124,7 +124,6 @@ Adjust as below:
 
 ```javascript
 const commonConfig = merge([
-  {
   ...
 leanpub-start-insert
   parts.loadJavaScript({ include: PATHS.app }),
@@ -150,7 +149,8 @@ W> 如果你希望引入在配置文件根目录**之外**的文件，然后通�
 
 At a minimum, you need [babel-preset-env](https://www.npmjs.com/package/babel-preset-env). It's a Babel preset that enables the needed plugins based on the environment definition you pass to it. It follows the **browserslist** definition discussed in the *Autoprefixing* chapter.
 
-最低限度，你需要[babel-preset-env](https://www.npmjs.com/package/babel-preset-env)。它是一个Babel预设器，可以支持所需的插件，这些插件基于你传入的环境定义。它遵循在*Autoprefixing*章节讨论的**browserslist**定义。
+最低限度，你需要[babel-preset-env](https://www.npmjs.com/package/babel-preset-env)。它是一个Babel预设器，可以支持所需的插件，这些插件基于你传入
+{pagebreak}
 
 Install the preset first:
 

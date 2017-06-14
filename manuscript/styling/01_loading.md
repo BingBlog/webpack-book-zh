@@ -363,7 +363,7 @@ T> PostCSS还支持基于*postcss.config.js*的配置。它依赖于[cosmiconfig
   loader: 'postcss-loader',
   options: {
     plugins: () => ([
-      require('cssnext'),
+      require('postcss-cssnext')(),
     ]),
   },
 },
